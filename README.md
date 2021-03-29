@@ -8,7 +8,7 @@ The purpose of this project is to create a station for monitoring the environmen
 
 
 ## Temperature and humidity 
-<img src="hhttps://www.cvbeltrame.it/wp-content/uploads/2014/06/Comfort-3.jpg" alt="system" width="500"/>
+<img src="https://www.cvbeltrame.it/wp-content/uploads/2014/06/Comfort-3.jpg" alt="system" width="500"/>
 
 
 ## Luminous well-being
