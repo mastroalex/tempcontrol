@@ -79,7 +79,7 @@ Define variables and print it with:
 Serial.print(h)
 Serial.print(t)
  ```
- 
+
 For other info  [DHT11 Reading Example](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_readiing/dht11_test)
 
 #### Web server
@@ -88,13 +88,13 @@ This is an asynchronous web server that update data automatically without need t
 Install the DHT library bi Adafruit.
 
 Follow the next step to install the ESPAsyncWebServer library:
-1. [Download AsyncWebServer library](https://github.com/me-no-dev/ESPAsyncWebServer/archive/master.zip)
+1. Download [AsyncWebServer library](https://github.com/me-no-dev/ESPAsyncWebServer/archive/master.zip)
 2. Unzip the .zip folder
 3. Rename your folder from ~~ESPAsyncWebServer-master~~ to ESPAsyncWebServer
 4. Move the ESPAsyncWebServer folder to your Arduino IDE installation libraries folder
 
 Follow the next step to install the ESPAsync TCP Library:
-1. [Download ESPAsync TCP library](https://github.com/me-no-dev/ESPAsyncWebServer/archive/master.zip)
+1. Download [ESPAsync TCP library](https://github.com/me-no-dev/ESPAsyncWebServer/archive/master.zip)
 2. Unzip
 3. Rename your folder from ~~ESPAsyncTCP-master~~ to ESPAsyncTCP
 4. Move the ESPAsyncTCP folder to your Arduino IDE installation libraries folder
