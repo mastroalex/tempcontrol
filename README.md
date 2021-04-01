@@ -74,6 +74,9 @@ float h = dht.readHumidity();
 // Read temperature as Celsius (the default)
 float t = dht.readTemperature();
   ```
+Define variables and print it with Seria.print(). 
+For other info  [DHT11 Reading Example](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_readiing/dht11_test)
+
 #### Web server
 The web server can be accessed with any device that has a browser on your local network.
 This is an asynchronous web server that update data automatically without need to refresh the web page and with custom CSS to style the web page.
