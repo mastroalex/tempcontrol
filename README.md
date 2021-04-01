@@ -74,7 +74,12 @@ float h = dht.readHumidity();
 // Read temperature as Celsius (the default)
 float t = dht.readTemperature();
   ```
-Define variables and print it with Seria.print(). 
+Define variables and print it with:
+ ```c
+Serial.print(h)
+Serial.print(t)
+ ```
+ 
 For other info  [DHT11 Reading Example](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_readiing/dht11_test)
 
 #### Web server
