@@ -19,6 +19,7 @@ The purpose of this project is to create a station for monitoring the environmen
 ### Shopping bag
 * DHT11 / DHT22
 * ESP32
+* ESP8266
 * Raspberry PI
 
 # Why 
@@ -55,8 +56,29 @@ Finally all the sensors and the relative esp32 will be soldered on a board and t
 A last possibility is to open the firewall ports and allow access to the webserver remotely.
 
 
-##  ESP 32 web server and sensors reading
+##  ESP 8622 web server and sensors reading
 
+
+In this case a wemos D3 is used. To use it with Arduino IDE instal ESP8266 Library and select NodeMCU 1 (ESP-12E) board. It is also important to install CH340G driver.
+Use this link http://arduino.esp8266.com/stable/package_esp8266com_index.json to add board manager and after install esp8266.
+To read DHT11 is used DTH library from Adafruit. 
+Frist include library and define pin
+ ```
+#include "DHT.h"
+#define DHTTYPE DHT11
+DHT dht(DHTPIN, DHTTYPE);
+  ```
+
+Install [ESPAsyncTCP](https://github.com/me-no-dev/ESPAsyncTCP) library.
+Download [] and rename the folder from  to 
+FINISCI DI COMMENTARE
+
+
+For other information and code comments [DHT11 ESP8266 Web Server](https://randomnerdtutorials.com/esp8266-dht11dht22-temperature-and-humidity-web-server-with-arduino-ide/)
+
+
+
+##  ESP 32 web server and sensors reading
 
 ## Alexa integrations 
 
@@ -71,4 +93,5 @@ A last possibility is to open the firewall ports and allow access to the webserv
 - [ESP32 DHT11/DHT22 Web Server](https://randomnerdtutorials.com/esp32-dht11-dht22-temperature-humidity-web-server-arduino-ide/)
 - [DIY Cloud Weather Station with ESP32/ESP8266](https://randomnerdtutorials.com/cloud-weather-station-esp32-esp8266/)
 - [Control ESP32 and ESP8266 GPIOs from Anywhere in the World](https://randomnerdtutorials.com/control-esp32-esp8266-gpios-from-anywhere/)
+-[ESP8266 DHT11/DHT22 Temperature and Humidity Web Server with Arduino IDE](https://randomnerdtutorials.com/esp8266-dht11dht22-temperature-and-humidity-web-server-with-arduino-ide/)
 
