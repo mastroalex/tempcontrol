@@ -2,6 +2,20 @@
 
 The purpose of this project is to create a station for monitoring the environmental conditions for home. The device will be open source and based on Arduino and NodeMCU.
 
+### Table of content
+- [Environmental conditions measurement unit](#environmental-conditions-measurement-unit)
+    + [Table of content](#table-of-content)
+    + [Shopping bag](#shopping-bag)
+- [Why](#why)
+  * [Temperature and humidity](#temperature-and-humidity)
+  * [Luminous well-being](#luminous-well-being)
+  * [Acoustic well-being](#acoustic-well-being)
+- [Project](#project)
+  * [ESP 32 web server and sensors reading](#esp-32-web-server-and-sensors-reading)
+  * [Alexa integrations](#alexa-integrations)
+  * [Raspberry Pi web server](#raspberry-pi-web-server)
+- [Future implementations](#future-implementations)
+
 ### Shopping bag
 * DHT11 / DHT22
 * ESP32
