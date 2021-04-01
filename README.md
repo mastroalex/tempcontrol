@@ -102,7 +102,7 @@ const char* password = "REPLACE_WITH_YOUR_PASSWORD";
 
 For other comment info to [CARTELLA CON TUTTE LE INFO E COMMENTI DI QUESTO FILE]()
 
-> For other information and code comments [DHT11 ESP8266 Web Server](https://randomnerdtutorials.com/esp8266-dht11dht22-temperature-and-humidity-web-server-with-arduino-ide/)
+> Thanks to Rui Santos. For other information and code comments [DHT11 ESP8266 Web Server](https://randomnerdtutorials.com/esp8266-dht11dht22-temperature-and-humidity-web-server-with-arduino-ide/)
 
 
 ##  ESP 32 web server and sensors reading
