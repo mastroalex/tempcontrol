@@ -86,7 +86,7 @@ Follow the next step to install the ESPAsyncWebServer library:
 4. Move the ESPAsyncWebServer folder to your Arduino IDE installation libraries folder
 
 Follow the next step to install the ESPAsync TCP Library:
-1. [Download](https://github.com/me-no-dev/ESPAsyncWebServer/archive/master.zip)
+1. [Download ESPAsync TCP library](https://github.com/me-no-dev/ESPAsyncWebServer/archive/master.zip)
 2. Unzip
 3. Rename your folder from ~~ESPAsyncTCP-master~~ to ESPAsyncTCP
 4. Move the ESPAsyncTCP folder to your Arduino IDE installation libraries folder
@@ -102,7 +102,7 @@ const char* password = "REPLACE_WITH_YOUR_PASSWORD";
 
 For other comment info to [CARTELLA CON TUTTE LE INFO E COMMENTI DI QUESTO FILE]()
 
-For other information and code comments [DHT11 ESP8266 Web Server](https://randomnerdtutorials.com/esp8266-dht11dht22-temperature-and-humidity-web-server-with-arduino-ide/)
+> For other information and code comments [DHT11 ESP8266 Web Server](https://randomnerdtutorials.com/esp8266-dht11dht22-temperature-and-humidity-web-server-with-arduino-ide/)
 
 
 ##  ESP 32 web server and sensors reading
