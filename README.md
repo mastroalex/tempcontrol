@@ -60,8 +60,8 @@ A last possibility is to open the firewall ports and allow access to the webserv
 
 
 In this case a wemos D3 is used. To use it with Arduino IDE instal ESP8266 Library and select NodeMCU 1 (ESP-12E) board. It is also important to install CH340G driver.
-Use this link http://arduino.esp8266.com/stable/package_esp8266com_index.json to add board manager and after install esp8266.
-### DHT 
+Use this link [esp8266 package](http://arduino.esp8266.com/stable/package_esp8266com_index.json) to add board manager and after install esp8266.
+#### DHT 
 To read DHT11 is used DTH library from Adafruit. 
 Frist include library and define pin
  ```c
@@ -74,7 +74,7 @@ float h = dht.readHumidity();
 // Read temperature as Celsius (the default)
 float t = dht.readTemperature();
   ```
-### Web server
+#### Web server
 The web server can be accessed with any device that has a browser on your local network.
 This is an asynchronous web server that update data automatically without need to refresh the web page and with custom CSS to style the web page.
 Install the DHT library bi Adafruit.
@@ -104,6 +104,7 @@ For other comment info to [ESP8266 Web Server Extra](https://github.com/mastroal
 
 > Thanks to Rui Santos. For other information and code comments [DHT11 ESP8266 Web Server](https://randomnerdtutorials.com/esp8266-dht11dht22-temperature-and-humidity-web-server-with-arduino-ide/)
 
+#### DS18B20
 
 ##  ESP 32 web server and sensors reading
 
