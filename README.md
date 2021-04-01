@@ -61,26 +61,48 @@ A last possibility is to open the firewall ports and allow access to the webserv
 
 In this case a wemos D3 is used. To use it with Arduino IDE instal ESP8266 Library and select NodeMCU 1 (ESP-12E) board. It is also important to install CH340G driver.
 Use this link http://arduino.esp8266.com/stable/package_esp8266com_index.json to add board manager and after install esp8266.
+### DHT 
 To read DHT11 is used DTH library from Adafruit. 
 Frist include library and define pin
- ```
+ ```c
 #include "DHT.h"
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
- // Reading temperature or humidity takes about 250 milliseconds!
-  // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
-  float h = dht.readHumidity();
-  // Read temperature as Celsius (the default)
-  float t = dht.readTemperature();
+// Reading temperature or humidity takes about 250 milliseconds!
+// Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
+float h = dht.readHumidity();
+// Read temperature as Celsius (the default)
+float t = dht.readTemperature();
   ```
+### Web server
+The web server can be accessed with any device that has a browser on your local network.
+This is an asynchronous web server that update data automatically without need to refresh the web page and with custom CSS to style the web page.
+Install the DHT library bi Adafruit.
 
-Install [ESPAsyncTCP](https://github.com/me-no-dev/ESPAsyncTCP) library.
-Download [] and rename the folder from  to 
-FINISCI DI COMMENTARE
+Follow the next step to install the ESPAsyncWebServer library:
+1. [Download AsyncWebServer library](https://github.com/me-no-dev/ESPAsyncWebServer/archive/master.zip)
+2. Unzip the .zip folder
+3. Rename your folder from ~~ESPAsyncWebServer-master~~ to ESPAsyncWebServer
+4. Move the ESPAsyncWebServer folder to your Arduino IDE installation libraries folder
 
+Follow the next step to install the ESPAsync TCP Library:
+1. [Download](https://github.com/me-no-dev/ESPAsyncWebServer/archive/master.zip)
+2. Unzip
+3. Rename your folder from ~~ESPAsyncTCP-master~~ to ESPAsyncTCP
+4. Move the ESPAsyncTCP folder to your Arduino IDE installation libraries folder
+Restard Arduino IDE.
+
+The example code is presented in [COMPLETARE LINK AL FILE E SALVARE FILE PERSONALIZZATO DI ESEMPIO SENZA PW WIFI]()
+
+Insert wifi credentials!
+```c
+const char* ssid = "REPLACE_WITH_YOUR_SSID";
+const char* password = "REPLACE_WITH_YOUR_PASSWORD";
+```
+
+For other comment info to [CARTELLA CON TUTTE LE INFO E COMMENTI DI QUESTO FILE]()
 
 For other information and code comments [DHT11 ESP8266 Web Server](https://randomnerdtutorials.com/esp8266-dht11dht22-temperature-and-humidity-web-server-with-arduino-ide/)
-
 
 
 ##  ESP 32 web server and sensors reading
