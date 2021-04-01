@@ -2,6 +2,8 @@
 
 ## Introduction 
 
+As indicated in the main file:
+
 The web server can be accessed with any device that has a browser on your local network.
 This is an asynchronous web server that update data automatically without need to refresh the web page and with custom CSS to style the web page.
 Install the DHT library bi Adafruit.
