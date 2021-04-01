@@ -67,6 +67,11 @@ Frist include library and define pin
 #include "DHT.h"
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
+ // Reading temperature or humidity takes about 250 milliseconds!
+  // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
+  float h = dht.readHumidity();
+  // Read temperature as Celsius (the default)
+  float t = dht.readTemperature();
   ```
 
 Install [ESPAsyncTCP](https://github.com/me-no-dev/ESPAsyncTCP) library.
