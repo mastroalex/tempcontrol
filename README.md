@@ -337,7 +337,7 @@ The first step is to create an account on [Sinric Pro](https://portal.sinric.pro
 
 #### ESP8266
 
-For the wifi connection and DHT reading we use the web server procedure indicated above.
+For the wifi connection, DHT reading and calbe connection we use the same web server procedure indicated above.
 
 Install and include library and dependencies for SinricPro:
 ```c
