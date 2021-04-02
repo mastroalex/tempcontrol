@@ -37,7 +37,7 @@ const char* password = "REPLACE_WITH_YOUR_PASSWORD";
 
 ## Add new sensor data
 
-Create variabile for data reading and update it in loop()
+Create variabile for data reading and update it in `loop()`
 
 ```c
 float data = 0;
@@ -52,7 +52,7 @@ Ad paragraph and placeholder into HTML section:
   </p>
 ```
 
-Ad section into script block for the placeholder:
+Ad section into `<script>` block for the placeholder:
 ```js
 setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
@@ -66,14 +66,14 @@ setInterval(function ( ) {
 }, 10000) ;
 ```
 
-Ad 'else if' section into processor():
+Ad `else if` section into processor():
 ```c
 else if (var == "DATA") { // DHT humidity
     return String(data);
   }
 ```
 
-Another options is to obtain sensor data with a specially created function and update it in this last section taking its data as a string. Suppose this function called specialfunction() this last paragraph would be:
+Another options is to obtain sensor data with a specially created function and update it in this last section taking its data as a string. Suppose this function called `specialfunction()` this last paragraph would be:
 
 ```c
 else if (var == "DATA") { // DHT humidity
@@ -100,18 +100,18 @@ The webpage include heading and differents paragraph to display sensor data.Ther
 All the HTML text with styles included is stored in the index_html variable. Now we’ll go through the HTML text and see what each part does.
 
 The following `<meta>` tag makes your web page responsive in any browser.
-```c
+```html
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ```
 
 The `<link>` tag is needed to load the icons from the fontawesome website.
-```c
+```html
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 ```
 
 Between the `<style></style>` tags there is some CSS.
 Text centered:
-```c
+```html
 html {
   font-family: Arial;
   display: inline-block;
@@ -142,7 +142,7 @@ Example for temperature:
 </p>
 ```
 
-The <i> tags display the fontawesome icons. To display different icon go to [Font Awesome Icon website](https://fontawesome.com/icons?d=gallery) and select the icon you’re looking for. Copy the HTML text provided.
+The `<i>` tags display the fontawesome icons. To display different icon go to [Font Awesome Icon website](https://fontawesome.com/icons?d=gallery) and select the icon you’re looking for. Copy the HTML text provided.
 ```html
 <i class="fas fa-adjust"></i>
 ``` 
