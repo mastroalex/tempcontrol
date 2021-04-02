@@ -82,7 +82,7 @@ Serial.print(h)
 Serial.print(t)
  ```
 
-** For other info [DHT11 Reading Example](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_reading/dht11_test) **
+*** For other info [DHT11 Reading Example](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_reading/dht11_test) ***
 
 #### Web server
 The web server can be accessed with any device that has a browser on your local network.
