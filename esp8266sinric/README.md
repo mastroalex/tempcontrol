@@ -3,6 +3,17 @@
 For integration with Alexa we will use the functions offered by Sinric Pro.
 
 ---
+## Table of contents
+
+- [Sinric Pro on ESP8266](#sinric-pro-on-esp8266)
+  * [Sinric Pro Temperature Sensor - DHT Sensor](#sinric-pro-temperature-sensor---dht-sensor)
+    + [ESP8266](#esp8266)
+    + [Alexa](#alexa)
+    + [App](#app)
+    + [See also](#see-also)
+    + [Code only for Sinric Pro](#code-only-for-sinric-pro)
+    + [Code also with web server integration](#code-also-with-web-server-integration)
+
 ## Sinric Pro Temperature Sensor - DHT Sensor
 
 Sinric pro is a very practical platform that allows us to connect the development board to Alexa and Google Home.
@@ -117,8 +128,13 @@ It's possibile to download the Sinric Pro App or to login into SinricPro website
 
 <img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266sinric/sincric_dht_webapp.png" alt="sinric_app_dht" width="1000">
 
+### See also 
 
-## Code only for Sinric Pro
+- [Sinric.com]()
+- [SinricPro (ESP8266 / ESP32 SDK)](https://github.com/sinricpro/esp8266-esp32-sdk)
+- [Sinric Example for ESP](https://github.com/sinricpro/esp8266-esp32-sdk/tree/master/examples)
+
+### Code only for Sinric Pro
 
 ```c
 
@@ -246,7 +262,7 @@ void loop() {
 }
 ```
 
-## Code also with web server integration
+### Code also with web server integration
 
 > For other info search in the main page or in web server page
 
@@ -254,4 +270,5 @@ void loop() {
 
 
 ```
+
 
