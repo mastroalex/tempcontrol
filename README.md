@@ -145,7 +145,7 @@ All the HTML text with styles included is stored in the index_html variable. Now
 </p>
 ```
 
-or automatic updates ther's some JavaScript code in our web page that updates the temperature and humidity automatically, every 10 seconds. Scripts in HTML text should go between the `<script></script>` tags.
+For automatic updates ther's some JavaScript code in our web page that updates the temperature and humidity automatically, every 10 seconds. Scripts in HTML text should go between the `<script></script>` tags.
 FExample for temperature:
 ```js
 <script>
