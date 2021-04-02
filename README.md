@@ -102,12 +102,12 @@ Serial.print(t)
 The web server can be accessed with any device that has a browser on your local network.
 This is an asynchronous web server that update data automatically without need to refresh the web page and with custom CSS to style the web page.
 
-> Complete description in: [ESP8266 Web Server Extra](https://github.com/mastroalex/tempcontrol/tree/main/esp8266webserveinfo)
+**Complete description** in: [ESP8266 Web Server Extra](https://github.com/mastroalex/tempcontrol/tree/main/esp8266webserveinfo)
 
 
 <img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266webserveinfo/webserver_example.png" alt="system" width="300"/>
 
-> DS18B20 hand held to see the difference
+> DS18B20 hand held to see temperature difference
 
 Install the DHT library bi Adafruit.
 
