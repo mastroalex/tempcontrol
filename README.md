@@ -72,6 +72,7 @@ To use it with Arduino IDE instal ESP8266 Library and select NodeMCU 1 (ESP-12E)
 Use this link [esp8266 package](http://arduino.esp8266.com/stable/package_esp8266com_index.json) to add board manager and after install esp8266.
 
 <img src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/05/ESP8266-NodeMCU-kit-12-E-pinout-gpio-pin.png?w=817&quality=100&strip=all&ssl=1" alt="nodemcu12E" width="400"/>
+
 ---
 
 #### DHT 
