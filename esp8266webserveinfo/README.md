@@ -42,7 +42,7 @@ Create variabile for data reading and update it in loop()
 ```c
 float data = 0;
 ```
-Ad paragraph into HTML section:
+Ad paragraph and placeholder into HTML section:
 ```html
  <p>
     <i class="fas fa-temperature-high" style="color:#b32d00;"></i> 
@@ -52,7 +52,7 @@ Ad paragraph into HTML section:
   </p>
 ```
 
-Ad section into script block:
+Ad section into script block for the placeholder:
 ```js
 setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
@@ -66,7 +66,7 @@ setInterval(function ( ) {
 }, 10000) ;
 ```
 
-Ad else if section into processor():
+Ad 'else if' section into processor():
 ```c
 else if (var == "DATA") { // DHT humidity
     return String(data);
