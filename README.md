@@ -181,7 +181,7 @@ For integration with Alexa we will use the functions offered by Sinric Pro.
 
 ---
 
-## Raspberry Pi web server
+## Raspberry Pi LAMP server
 
 
 # Future implementations
