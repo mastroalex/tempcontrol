@@ -211,7 +211,6 @@ void loop() {
       Serial.print("DS temp:");
       Serial.print(temperatureC);
       Serial.println("ºC");
-      delay(2500);
     }
     // Read Humidity
     float newH = dht.readHumidity();
