@@ -110,9 +110,50 @@ The <link> tag is needed to load the icons from the fontawesome website.
 ```
 
 Between the <style></style> tags there is some CSS.
+Text centered:
+```c
+html {
+  font-family: Arial;
+  display: inline-block;
+  margin: 0px auto;
+  text-align: center;
+}
+```
 
+Labels styled:
+```c
+dht-labels{
+  font-size: 1.5rem;
+  vertical-align:middle;
+  padding-bottom: 15px;
+}
+```
 
+Inside the <body></body> tags there is the web page content.
+The <h2></h2> tags add a heading.
+There are different paragraph, one for each sensor.
+Example for temperature:
+```c
+<p>
+  <i class="fas fa-thermometer-half" style="color:#059e8a;"</i> 
+  <span class="dht-labels">Temperature</span> 
+  <span id="temperature">%TEMPERATURE%</span>
+  <sup class="units">°C</sup>
+</p>
+```
 
+The <i> tags display the fontawesome icons. To display different icon go to [Font Awesome Icon website](https://fontawesome.com/icons?d=gallery) and select the icon you’re looking for. Copy the HTML text provided.
+```c
+<i class="fas fa-adjust"></i>
+``` 
+It's possibile also to change color, in hexadecimal.
+``` c
+<i class="fas fa-adjus" style="color:#00add6;"></i> 
+``` 
+The TEMPERATURE text between % signs is a placeholder for the temperature value.
+```html
+<span id="temperature">%TEMPERATURE%</span>
+``` 
 
 
 ## Complete code
