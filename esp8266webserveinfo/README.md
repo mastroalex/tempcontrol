@@ -102,12 +102,11 @@ Create an AsyncWebServerobject on port 80.
 AsyncWebServer server(80);
 ```
 #### Web page building
-
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266webserveinfo/webserver.png" alt="system" width="850"/>
-
 The webpage include heading and differents paragraph to display sensor data.There are also two icons to style the page.
 
 All the HTML text with styles included is stored in the index_html variable. Now we’ll go through the HTML text and see what each part does.
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266webserveinfo/webserver.png" alt="system" width="850"/>
+
 
 The following `<meta>` tag makes your web page responsive in any browser.
 ```html
