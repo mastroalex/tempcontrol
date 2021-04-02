@@ -1,5 +1,15 @@
 # Web server for ESP 8266 
 
+Table of contents:
+* [Introduction](#introduction)
+  * [Add new sensor data](#add-new-sensor-data)
+  * [Code comments](#code-comments)
+      - [Web page building](#web-page-building)
+      - [HTML Body](#html-body)
+      - [Automatic updates](#automatic-updates)
+      - [Processor](#processor)
+  * [Complete code](#complete-code)
+
 ## Introduction 
 
 As indicated in the main file:
@@ -93,7 +103,7 @@ AsyncWebServer server(80);
 ```
 #### Web page building
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266webserveinfo/webserver_example.png" alt="system" width="850"/>
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266webserveinfo/webserver.png" alt="system" width="850"/>
 
 The webpage include heading and differents paragraph to display sensor data.There are also two icons to style the page.
 
@@ -154,7 +164,7 @@ The TEMPERATURE text between % signs is a placeholder for the temperature value.
 ```html
 <span id="temperature">%TEMPERATURE%</span>
 ``` 
-## Automatic updates
+#### Automatic updates
 For automatic updates ther's some JavaScript code in our web page that updates the temperature and humidity automatically, every 10 seconds. Scripts in HTML text should go between the `<script></script>` tags.
 FExample for temperature:
 ```js
