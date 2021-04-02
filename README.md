@@ -148,7 +148,11 @@ For other info [DS18B20 Reading Exampe](https://github.com/mastroalex/tempcontro
 
 ##  ESP 32 web server and sensors reading
 
+The section for ESP 32 will be updated soon.
+
 ## Alexa integrations 
+
+For integration with Alexa we will use the functions offered by Sinric Pro.
 
 ## Raspberry Pi web server
 
