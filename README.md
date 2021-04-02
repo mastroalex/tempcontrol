@@ -428,8 +428,21 @@ Call in `loop()` the function:
   SinricPro.handle();
   handleTemperaturesensor(); 
 ```
+#### Alexa
+It's possibile to add Sinric Pro skills in Alexa app and login with Sinric credential to add device.
+
+#### App 
+
+It's possibile to download the Sinric Pro App or to login into SinricPro website to visualize sensor data log for different time period. 
+
+
+
+
 
 >Other information and complete sketch in [esp8266 sinric example folder](https://github.com/mastroalex/tempcontrol/tree/main/esp8266sinric)
+
+
+This code will be integrated with that of the web server.
 
 ---
 
