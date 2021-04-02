@@ -46,7 +46,7 @@ Sever study show how negative health and well-being outcomes associated with inc
 
 The main factors that influence thermal comfort are those that determine heat gain and loss, namely metabolic rate, clothing insulation, air temperature, mean radiant temperature, air speed and relative humidity. Psychological parameters, such as individual expectations, also affect thermal comfort. The thermal comfort temperature may vary greatly between individuals and depending on factors such as activity level, clothing, and humidity.
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Psychrometric_chart_-_PMV_method.png" alt="psychrometric" width="700"> 
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Psychrometric_chart_-_PMV_method.png" alt="psychrometric" width="800"> 
 
 > From [Wikipedia](https://en.wikipedia.org/wiki/Thermal_comfort#/media/File:Psychrometric_chart_-_PMV_method.png) - This psychrometric chart represents the acceptable combination of air temperature and humidity values, according to the PMV/PPD method in the ASHRAE 55-2010 Standard. The comfort zone in blue represents the 90% of acceptability,
 
@@ -94,7 +94,7 @@ Indoor air quality (IAQ) problems result from interactions between building mate
 - Indoor air contaminants - chemicals, dusts, moulds or fungi, bacteria, gases, vapours, odours.
 - Insufficient outdoor air intake.
 
-<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.kaggle.com%2Fritesh7355%2Fair-quality-indexnew-delhi&psig=AOvVaw0LVEL4zv3IS5_5qZP6lwt-&ust=1617485178940000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMCcp_6_4O8CFQAAAAAdAAAAABAJ" alt="system" width="500"/>
+<img src="https://www.deq.ok.gov/wp-content/uploads/air-division/aqi_mini-768x432.png" alt="system" width="800"/>
 
 ## Acoustic well-being
 <img src="https://images.adsttc.com/media/images/5ec1/84fe/b357/6510/6b00/09d2/newsletter/Graph_final-01.jpg?1589740784" alt="system" width="800"/>
