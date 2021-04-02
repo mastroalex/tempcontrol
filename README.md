@@ -82,7 +82,7 @@ Serial.print(h)
 Serial.print(t)
  ```
 
-*** For other info [DHT11 Reading Example](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_reading/dht11_test) ***
+> ## For other info [DHT11 Reading Example](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_reading/dht11_test) 
 
 #### Web server
 The web server can be accessed with any device that has a browser on your local network.
@@ -116,7 +116,7 @@ const char* ssid = "REPLACE_WITH_YOUR_SSID";
 const char* password = "REPLACE_WITH_YOUR_PASSWORD";
 ```
 
-For other info to [ESP8266 Web Server Extra](https://github.com/mastroalex/tempcontrol/tree/main/esp8266webserveinfo)
+> ## For other info to [ESP8266 Web Server Extra](https://github.com/mastroalex/tempcontrol/tree/main/esp8266webserveinfo)
 
 > Thanks to Rui Santos. For other information and code comments [DHT11 ESP8266 Web Server](https://randomnerdtutorials.com/esp8266-dht11dht22-temperature-and-humidity-web-server-with-arduino-ide/)
 
@@ -144,7 +144,7 @@ sensors.requestTemperatures();
 float temperatureC = sensors.getTempCByIndex(0);
 ```
 
-For other info [DS18B20 Reading Exampe](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_reading/ds18b20_test)
+> ## For other info [DS18B20 Reading Exampe](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_reading/ds18b20_test)
 
 ##  ESP 32 web server and sensors reading
 
