@@ -35,10 +35,8 @@ const char* password = "REPLACE_WITH_YOUR_PASSWORD";
 ```
 
 
-## Add new sensors info
+## Add new sensor data
 
-
-## Code comments 
 Create variabile for data reading and update it in loop()
 
 ```c
@@ -82,6 +80,11 @@ else if (var == "DATA") { // DHT humidity
     return String(specialfunction());
   }
 ```
+
+
+
+## Code comments 
+
 
 ## Complete code
 ```c
