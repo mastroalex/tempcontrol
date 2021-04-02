@@ -436,15 +436,14 @@ It's possibile to add Sinric Pro skills in Alexa app and login with Sinric crede
 
 #### App 
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266sinric/sinric_dht_mobileapp.png" alt="sinric_app_dht" width="400">
-
 It's possibile to download the Sinric Pro App or to login into SinricPro website to visualize sensor data log for different time period. 
 
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266sinric/sinric_dht_mobileapp.png" alt="sinric_app_dht" width="400">
 
 
 
 
->Other information and complete sketch in [esp8266 sinric example folder](https://github.com/mastroalex/tempcontrol/tree/main/esp8266sinric)
+> **Other information and complete sketch in** [esp8266 sinric example folder](https://github.com/mastroalex/tempcontrol/tree/main/esp8266sinric)
 
 
 This code will be integrated with that of the web server.
