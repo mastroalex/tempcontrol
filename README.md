@@ -63,6 +63,9 @@ A last possibility is to open the firewall ports and allow access to the webserv
 
 In this case a wemos D3 is used. To use it with Arduino IDE instal ESP8266 Library and select NodeMCU 1 (ESP-12E) board. It is also important to install CH340G driver.
 Use this link [esp8266 package](http://arduino.esp8266.com/stable/package_esp8266com_index.json) to add board manager and after install esp8266.
+
+---
+
 #### DHT 
 To read DHT11 is used DTH library from Adafruit. 
 Frist include library and define pin
@@ -83,6 +86,8 @@ Serial.print(t)
  ```
 
 > ## For other info [DHT11 Reading Example](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_reading/dht11_test) 
+
+---
 
 #### Web server
 The web server can be accessed with any device that has a browser on your local network.
@@ -120,6 +125,8 @@ const char* password = "REPLACE_WITH_YOUR_PASSWORD";
 
 > Thanks to Rui Santos. For other information and code comments [DHT11 ESP8266 Web Server](https://randomnerdtutorials.com/esp8266-dht11dht22-temperature-and-humidity-web-server-with-arduino-ide/)
 
+---
+
 #### DS18B20
 
 Install library for DS18B20: install [OneWire](https://github.com/PaulStoffregen/OneWire) from library manager. Install Dallas Temperature library by Miles Burton from library manager.
@@ -146,13 +153,20 @@ float temperatureC = sensors.getTempCByIndex(0);
 
 > ## For other info [DS18B20 Reading Exampe](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_reading/ds18b20_test)
 
+---
+
 ##  ESP 32 web server and sensors reading
 
 The section for ESP 32 will be updated soon.
 
+---
+
+
 ## Alexa integrations 
 
 For integration with Alexa we will use the functions offered by Sinric Pro.
+
+---
 
 ## Raspberry Pi web server
 
