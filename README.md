@@ -429,7 +429,10 @@ Call in `loop()` the function:
   handleTemperaturesensor(); 
 ```
 
-Other information and complete sketch in [esp8266 sinric example folder]()
+>Other information and complete sketch in [esp8266 sinric example folder](https://github.com/mastroalex/tempcontrol/tree/main/esp8266sinric)
+
+---
+
 ## Raspberry Pi LAMP server
 
 
