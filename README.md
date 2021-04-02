@@ -37,11 +37,64 @@ The purpose of this project is to create a station for monitoring the environmen
 # Why 
 
 ## Temperature and humidity 
-<img src="https://www.cvbeltrame.it/wp-content/uploads/2014/06/Comfort-3.jpg" alt="system" width="500"/>
 
+Thermal comfort is the condition of mind that expresses satisfaction with the thermal environment. The human body can be viewed as a heat engine where food is the input energy. The human body will release excess heat into the environment and the heat transfer is proportional to temperature difference. 
+Both the hot and cold scenarios lead to discomfort. 
+
+
+Sever study show how negative health and well-being outcomes associated with increasing frequency of heat stress interfering with daily activities. 
+
+The main factors that influence thermal comfort are those that determine heat gain and loss, namely metabolic rate, clothing insulation, air temperature, mean radiant temperature, air speed and relative humidity. Psychological parameters, such as individual expectations, also affect thermal comfort. The thermal comfort temperature may vary greatly between individuals and depending on factors such as activity level, clothing, and humidity.
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Psychrometric_chart_-_PMV_method.png" alt="psychrometric" width="500"> 
+
+> From [Wikipedia](https://en.wikipedia.org/wiki/Thermal_comfort#/media/File:Psychrometric_chart_-_PMV_method.png) - This psychrometric chart represents the acceptable combination of air temperature and humidity values, according to the PMV/PPD method in the ASHRAE 55-2010 Standard. The comfort zone in blue represents the 90% of acceptability,
+
+
+
+Generally, humans do not perform well under thermal stress with performances lower than their performance at normal thermal wet conditions.  Some of the physiological effects of thermal heat stress include increased blood flow to the skin, sweating, and increased ventilation.
 
 ## Luminous well-being
+
+People receive about 85 percent of their information through their sense of sight. Appropriate lighting, without glare or shadows, can reduce eye fatigue and headaches; it can prevent workplace incidents by increasing the visibility of moving machinery and other safety hazards. Good quality lighting also reduces the chance of incidents and injuries from "momentary blindness" (momentary low field vision due to eyes adjusting from brighter to darker, or vice-versa, surroundings).
+
+The ability to "see" at work depends not only on lighting but also on:
+
+- The time to focus on an object. Fast moving objects are hard to see.
+- The size of an object. Very small objects are hard to see.
+- Brightness. Too much or too little reflected light makes objects hard to see.
+- Contrast between an object and its immediate background. Too little contrast makes it hard to distinguish an object from the background.
+
 <img src="https://www.smow.com/pics/g/w/2064/smow-planungsthemen-licht-arbeitsplatz-grafik-lichteinfall-2.jpg" alt="system" width="500"/>
+
+Light sources can be divided between natural light and electrical sources. In the case of electric light sources, different types of light bulbs can produce different effects. The effects range from the warmth of light to energy efficiency to the effect on eyesight to the colour rendering.
+
+Not enough light can also be a problem so even in workplaces where daylight is available, it is essential to have a good electric lighting system.
+
+There are three basic types of lighting:
+- General.
+- Localized-general
+- Local (or task).
+
+<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ilepower.com%2Fblogs%2Fblog%2Fthe-three-basic-types-of-lighting&psig=AOvVaw1B3Ts5OYLMU8_2-pl3wGG-&ust=1617485092275000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIDQ_9S_4O8CFQAAAAAdAAAAABAN" alt="system" width="600"/> 
+
+Eye discomfort is a general term which can include some or many symptoms. It may be part of “computer vision syndrome” which includes: eyestrain, dry eyes, blurred vision, red or pink eyes, burning, light sensitivity, headaches, and pain in the shoulders, neck and back.
+Eye discomfort symptoms may be caused by: poor lighting, glare on a computer or tablet screen, poor quality computer or tablet screen (e.g., poor resolution, blurry image, etc.), improper viewing distances, poor seating posture, uncorrected vision problems, dry air, air movement, or a combination of these factors.
+
+The recommended range of illuminations varies in different task. From simple orientation 100-500 Lux (lumens for square inches), to visual tasks of medium contrast or small size 700-1200 Lux, to visual tasks of low contrast and very small size over a prolonged period 2000-5000 Lux.
+
+It is also important to valuate reflectance of object, glare and reflectance.
+
+
+## Air quality 
+
+Indoor air quality (IAQ) problems result from interactions between building materials and furnishing, activities within the building, climate, and building occupants. IAQ problems may arise from one or more of the following causes:
+
+- Indoor environment - inadequate temperature, humidity, poor air circulation, ventilation system issues.
+- Indoor air contaminants - chemicals, dusts, moulds or fungi, bacteria, gases, vapours, odours.
+- Insufficient outdoor air intake.
+
+<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.kaggle.com%2Fritesh7355%2Fair-quality-indexnew-delhi&psig=AOvVaw0LVEL4zv3IS5_5qZP6lwt-&ust=1617485178940000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMCcp_6_4O8CFQAAAAAdAAAAABAJ" alt="system" width="500"/>
 
 ## Acoustic well-being
 <img src="https://images.adsttc.com/media/images/5ec1/84fe/b357/6510/6b00/09d2/newsletter/Graph_final-01.jpg?1589740784" alt="system" width="500"/>
@@ -52,6 +105,8 @@ The project is divided into several phases.
 After the fist stage of sensor testing and related library studies the idea is to use a local web server (on the ESP32) to read the data from LAN. This will also help analyze the ideal position to put the sensory box. The web server is an asynchronous web server built using the [ESPAsyncWebServer library](https://github.com/me-no-dev/ESPAsyncWebServer) so the sensor reading is update automatically without the need to refresh the web page. 
 
 The third phase consists to allowing alexa to read temperature with [Sinric](https://sinric.com/login?returnUrl=%2F). This will also allow us to control EPS32  outputs through Alexa vocal commands.
+
+Sinric permit a fists remote reading and logging for sensors data but only for temperature, humidity, air quality and energy consumption. 
 
 The most important step is to create a LAMP web server on Raspberry Pi and to use it to publish data. This also allows us to integrate several EPS32s (e.g. for different rooms) into a single web server.
 
@@ -67,6 +122,9 @@ Finally all the sensors and the relative esp32 will be soldered on a board and t
 
 A last possibility is to open the firewall ports and allow access to the webserver remotely.
 
+Another options is to have a domain name and hosting account that allows to store sensor readings from the ESP32 or ESP8266. It's possible to visualize the readings from anywhere in the world by accessing your own server domain.
+
+<img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/08/ESP32-MySQL-Charts-Project-Overview.png?w=750&quality=100&strip=all&ssl=1" alt="system" width="700"/>
 
 ##  ESP 8622 web server and sensors reading
 
@@ -456,6 +514,22 @@ This code will be integrated with that of the web server.
 
 ## Raspberry Pi LAMP server
 
+**The following has been taken from [ESP32/ESP8266 Publish Data to Raspberry Pi LAMP Server](https://randomnerdtutorials.com/esp32-esp8266-raspberry-pi-lamp-server/) and not yet revised**
+
+--- 
+
+
+
+## Private domanin 
+
+
+**The following has been taken from [Visualize Your Sensor Readings from Anywhere in the World](https://randomnerdtutorials.com/visualize-esp32-esp8266-sensor-readings-from-anywhere/) and not yet revised**
+
+--- 
+
+
+
+
 
 # Future implementations
 
@@ -471,4 +545,9 @@ This code will be integrated with that of the web server.
 - [Sinric.com]()
 - [SinricPro (ESP8266 / ESP32 SDK)](https://github.com/sinricpro/esp8266-esp32-sdk)
 - [Sinric Example for ESP](https://github.com/sinricpro/esp8266-esp32-sdk/tree/master/examples)
-
+- [DIY Air Quality Monitor](https://howtomechatronics.com/projects/diy-air-quality-monitor-pm2-5-co2-voc-ozone-temp-hum-arduino-meter/)
+- [Visualize Your Sensor Readings from Anywhere in the World](https://randomnerdtutorials.com/visualize-esp32-esp8266-sensor-readings-from-anywhere/)
+- [Thermal comfort](https://en.wikipedia.org/wiki/Thermal_comfort)
+- [A Meta-Analysis of Performance Response Under Thermal Stressors](https://journals.sagepub.com/doi/10.1518/001872007X230226)
+- [Thermoregulatory responses to environmental toxicants](https://www.sciencedirect.com/science/article/abs/pii/S0041008X08000288?via%3Dihub)
+- [The Importance of Humidity in the Relationship between Heat and Population Mental Health](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0164190)
