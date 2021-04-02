@@ -174,7 +174,7 @@ if (this.readyState == 4 && this.status == 200) {
   document.getElementById("temperature").innerHTML = this.responseText;
 }
 ```
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266webserveinfo/webserver.png" alt="system" width="350"/>
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266webserveinfo/webserver.png" alt="system" width="500"/>
 
 Another important function is `processor()` function, that will replace the placeholders in our HTML text with the actual temperature and humidity values.
 ```c
