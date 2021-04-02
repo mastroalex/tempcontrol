@@ -85,6 +85,35 @@ else if (var == "DATA") { // DHT humidity
 
 ## Code comments 
 
+For the code part and the variables that refer to a particular sensor look in the [reading examples folder](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_reading).
+
+Create an AsyncWebServerobject on port 80.
+```c
+AsyncWebServer server(80);
+```
+#### Web page building
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266webserveinfo/webserver_example.png" alt="system" width="850"/>
+
+The webpage include heading and differents paragraph to display sensor data.There are also two icons to style the page.
+
+All the HTML text with styles included is stored in the index_html variable. Now we’ll go through the HTML text and see what each part does.
+
+The following <meta> tag makes your web page responsive in any browser.
+```c
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
+
+The <link> tag is needed to load the icons from the fontawesome website.
+```c
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+```
+
+Between the <style></style> tags there is some CSS.
+
+
+
+
 
 ## Complete code
 ```
