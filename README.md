@@ -155,7 +155,7 @@ OneWire oneWire(oneWireBus);
 DallasTemperature sensors(&oneWire);
 ```
 
-In the setup() section start sensors and serial.
+In the `setup()` section start sensors and serial.
 Request temperature with:
 ```c
 sensors.requestTemperatures(); 
