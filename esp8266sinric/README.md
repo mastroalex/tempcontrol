@@ -128,6 +128,8 @@ It's possibile to download the Sinric Pro App or to login into SinricPro website
 
 <img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266sinric/sincric_dht_webapp.png" alt="sinric_app_dht" width="1000">
 
+To secure data logging set a turn on timer for every day.
+
 ### See also 
 
 - [Sinric.com]()
