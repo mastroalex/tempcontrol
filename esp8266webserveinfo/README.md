@@ -99,17 +99,17 @@ The webpage include heading and differents paragraph to display sensor data.Ther
 
 All the HTML text with styles included is stored in the index_html variable. Now we’ll go through the HTML text and see what each part does.
 
-The following <meta> tag makes your web page responsive in any browser.
+The following `<meta>` tag makes your web page responsive in any browser.
 ```c
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ```
 
-The <link> tag is needed to load the icons from the fontawesome website.
+The `<link>` tag is needed to load the icons from the fontawesome website.
 ```c
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 ```
 
-Between the <style></style> tags there is some CSS.
+Between the `<style></style>` tags there is some CSS.
 Text centered:
 ```c
 html {
@@ -121,7 +121,7 @@ html {
 ```
 
 Labels styled:
-```c
+```html
 dht-labels{
   font-size: 1.5rem;
   vertical-align:middle;
@@ -129,11 +129,11 @@ dht-labels{
 }
 ```
 
-Inside the <body></body> tags there is the web page content.
-The <h2></h2> tags add a heading.
+Inside the `<body></body>` tags there is the web page content.
+The `<h2></h2>` tags add a heading.
 There are different paragraph, one for each sensor.
 Example for temperature:
-```c
+```html
 <p>
   <i class="fas fa-thermometer-half" style="color:#059e8a;"</i> 
   <span class="dht-labels">Temperature</span> 
@@ -143,17 +143,95 @@ Example for temperature:
 ```
 
 The <i> tags display the fontawesome icons. To display different icon go to [Font Awesome Icon website](https://fontawesome.com/icons?d=gallery) and select the icon you’re looking for. Copy the HTML text provided.
-```c
+```html
 <i class="fas fa-adjust"></i>
 ``` 
 It's possibile also to change color, in hexadecimal.
-``` c
+```html
 <i class="fas fa-adjus" style="color:#00add6;"></i> 
 ``` 
-The TEMPERATURE text between % signs is a placeholder for the temperature value.
+The TEMPERATURE text between % signs is a placeholder for the temperature value. This means that this `%TEMPERATURE%` text is like a variable that will be replaced by the actual temperature value from the DHT sensor. The placeholders on the HTML text should go between % signs.
 ```html
 <span id="temperature">%TEMPERATURE%</span>
 ``` 
+
+For automatic updates ther's some JavaScript code in our web page that updates the temperature and humidity automatically, every 10 seconds. Scripts in HTML text should go between the `<script></script>` tags.
+FExample for temperature:
+```js
+<script>
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("temperature").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/temperature", true);
+  xhttp.send();
+}, 10000 ) ;
+``` 
+
+To update data on the background, there is a setInterval() function that runs every 10 seconds.
+Basically, it makes a request in the `/data` URL to get the latest `data`:
+```js
+  xhttp.open("GET", "/data", true);
+  xhttp.send();
+}, 10000 ) ;
+```
+When it receives that value, it updates the HTML element whose id is data.
+```js
+if (this.readyState == 4 && this.status == 200) {
+  document.getElementById("temperature").innerHTML = this.responseText;
+}
+```
+
+Another important function is `processor()` function, that will replace the placeholders in our HTML text with the actual temperature and humidity values.
+```c
+String processor(const String& var){
+  //Serial.println(var);
+  if(var == "TEMPERATURE"){
+    return String(t);
+  }
+  else if(var == "DATA"){
+    return String(data);
+  }
+  return String();
+}
+```
+When the web page is requested, we check if the HTML has any placeholders. If it finds the `%DATA%` placeholder, we return the temperature that is stored on the data variable.
+
+In `setup()` there are different initializations. 
+Connection to your local network and print the ESP8266 IP address:
+```c
+WiFi.begin(ssid, password);
+while (WiFi.status() != WL_CONNECTED) {
+  delay(1000);
+  Serial.println("Connecting to WiFi..");
+}
+```
+
+And the code to handle the web server.
+When we make a request on the root URL, we send the HTML text that is stored on the `index_html` variable. We also need to pass the `processor` function, that will replace all the placeholders with the right values.
+```c
+server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
+  request->send_P(200, "text/html", index_html, processor);
+});
+```
+
+Add additional handlers to update the temperature and humidity readings. When we receive a request on the `/data` URL, we simply need to send the updated temperature value. It is plain text, and it should be sent as a char, so, we use the `c_str()` method.
+
+```c
+server.on("/data", HTTP_GET, [](AsyncWebServerRequest *request){
+  request->send_P(200, "text/plain", String(data).c_str());
+});
+```
+
+Start webserver
+```c
+server.begin();
+```
+
+It is recommended to print the sensor data on the serial monitor through the `loop()` for a debug function.
 
 
 ## Complete code
