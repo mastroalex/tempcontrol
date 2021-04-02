@@ -128,7 +128,7 @@ dht-labels{
   padding-bottom: 15px;
 }
 ```
-
+#### HTML Body
 Inside the `<body></body>` tags there is the web page content.
 The `<h2></h2>` tags add a heading.
 There are different paragraph, one for each sensor.
@@ -154,7 +154,7 @@ The TEMPERATURE text between % signs is a placeholder for the temperature value.
 ```html
 <span id="temperature">%TEMPERATURE%</span>
 ``` 
-
+## Automatic updates
 For automatic updates ther's some JavaScript code in our web page that updates the temperature and humidity automatically, every 10 seconds. Scripts in HTML text should go between the `<script></script>` tags.
 FExample for temperature:
 ```js
@@ -184,7 +184,7 @@ if (this.readyState == 4 && this.status == 200) {
   document.getElementById("temperature").innerHTML = this.responseText;
 }
 ```
-
+#### Processor
 Another important function is `processor()` function, that will replace the placeholders in our HTML text with the actual temperature and humidity values.
 ```c
 String processor(const String& var){
