@@ -111,7 +111,7 @@ The `<link>` tag is needed to load the icons from the fontawesome website.
 
 Between the `<style></style>` tags there is some CSS.
 Text centered:
-```html
+```css
 html {
   font-family: Arial;
   display: inline-block;
@@ -121,7 +121,7 @@ html {
 ```
 
 Labels styled:
-```html
+```css
 dht-labels{
   font-size: 1.5rem;
   vertical-align:middle;
