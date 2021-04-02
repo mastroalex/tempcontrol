@@ -87,7 +87,7 @@ else if (var == "DATA") { // DHT humidity
 
 
 ## Complete code
-```c
+```
 // Import required libraries
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
