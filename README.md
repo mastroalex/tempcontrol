@@ -17,7 +17,7 @@ The purpose of this project is to create a station for monitoring the environmen
       - [DS18B20](#ds18b20)
   * [ESP 32 web server and sensors reading](#esp-32-web-server-and-sensors-reading)
   * [Alexa integrations](#alexa-integrations)
-  * [Raspberry Pi web server](#raspberry-pi-web-server)
+  * [Raspberry Pi LAMP server](#raspberry-pi-LAMP-server)
 - [Future implementations](#future-implementations)
 - [References](#references)
 
