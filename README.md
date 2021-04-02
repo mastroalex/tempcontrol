@@ -94,7 +94,7 @@ Serial.print(h)
 Serial.print(t)
  ```
 
-> ## For other info [DHT11 Reading Example](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_reading/dht11_test) 
+> For other info [DHT11 Reading Example](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_reading/dht11_test) 
 
 ---
 
@@ -225,7 +225,57 @@ server.begin();
 
 It is recommended to print the sensor data on the serial monitor through the `loop()` for a debug function.
 
-> ## For other info to [ESP8266 Web Server Extra](https://github.com/mastroalex/tempcontrol/tree/main/esp8266webserveinfo)
+___
+
+#### Add new sensor data
+
+
+Create variabile for data reading and update it in `loop()`
+
+```c
+float data = 0;
+```
+Ad paragraph and placeholder into HTML section:
+```html
+ <p>
+    <i class="fas fa-temperature-high" style="color:#b32d00;"></i> 
+    <span class="dht-labels">Data</span> 
+    <span id="dataid">%DATA%</span>
+    <sup class="units">&deg;C</sup>
+  </p>
+```
+
+Ad section into `<script>` block for the placeholder:
+```js
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("dataid").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/data", true);
+  xhttp.send();
+}, 10000) ;
+```
+
+Ad `else if` section into processor():
+```c
+else if (var == "DATA") { // DHT humidity
+    return String(data);
+  }
+```
+
+Another options is to obtain sensor data with a specially created function and update it in this last section taking its data as a string. Suppose this function called `specialfunction()` this last paragraph would be:
+
+```c
+else if (var == "DATA") { // DHT humidity
+    return String(specialfunction());
+  }
+```
+___
+
+> For other info to [ESP8266 Web Server Extra](https://github.com/mastroalex/tempcontrol/tree/main/esp8266webserveinfo)
 
 > Thanks to Rui Santos. For other information and code comments [DHT11 ESP8266 Web Server](https://randomnerdtutorials.com/esp8266-dht11dht22-temperature-and-humidity-web-server-with-arduino-ide/)
 
@@ -255,7 +305,7 @@ sensors.requestTemperatures();
 float temperatureC = sensors.getTempCByIndex(0);
 ```
 
-> ## For other info [DS18B20 Reading Exampe](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_reading/ds18b20_test)
+> For other info [DS18B20 Reading Exampe](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_reading/ds18b20_test)
 
 ---
 
