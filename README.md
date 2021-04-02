@@ -76,7 +76,9 @@ Use this link [esp8266 package](http://arduino.esp8266.com/stable/package_esp826
 
 ---
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266_sensor_reading/sensor_esp8266_bb.png" alt="nodemcu12E" width="500"/>
+**Circuit diagram**
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266_sensor_reading/sensor_esp8266_bb.png" alt="nodemcu12E" width="900"/>
 
 ---
 
