@@ -9,6 +9,7 @@ The purpose of this project is to create a station for monitoring the environmen
 - [Why](#why)
   * [Temperature and humidity](#temperature-and-humidity)
   * [Luminous well-being](#luminous-well-being)
+  * [Air quality](#air-quality)
   * [Acoustic well-being](#acoustic-well-being)
 - [Project](#project)
   * [ESP 8622 web server and sensors reading](#esp-8622-web-server-and-sensors-reading)
@@ -23,6 +24,7 @@ The purpose of this project is to create a station for monitoring the environmen
       - [Alexa](#alexa)
       - [App](#app)
   * [Raspberry Pi LAMP server](#raspberry-pi-lamp-server)
+  * [Private domanin](#private-domanin)
 - [Future implementations](#future-implementations)
 - [References](#references)
 
@@ -124,7 +126,7 @@ A last possibility is to open the firewall ports and allow access to the webserv
 
 Another options is to have a domain name and hosting account that allows to store sensor readings from the ESP32 or ESP8266. It's possible to visualize the readings from anywhere in the world by accessing your own server domain.
 
-<img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/08/ESP32-MySQL-Charts-Project-Overview.png?w=750&quality=100&strip=all&ssl=1" alt="system" width="800"/>
+<img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/08/ESP32-MySQL-Charts-Project-Overview.png?w=750&quality=100&strip=all&ssl=1" alt="system" width="700"/>
 
 ##  ESP 8622 web server and sensors reading
 
@@ -140,7 +142,7 @@ Use this link [esp8266 package](http://arduino.esp8266.com/stable/package_esp826
 
 **Circuit diagram**
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266_sensor_reading/sensor_esp8266_bb.png" alt="nodemcu12E" width="900"/>
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266_sensor_reading/sensor_esp8266_bb.png" alt="nodemcu12E" width="800"/>
 
 ---
 
