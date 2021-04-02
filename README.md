@@ -85,6 +85,10 @@ For other info  [DHT11 Reading Example](https://github.com/mastroalex/tempcontro
 #### Web server
 The web server can be accessed with any device that has a browser on your local network.
 This is an asynchronous web server that update data automatically without need to refresh the web page and with custom CSS to style the web page.
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266webserveinfo/webserver_example.png" alt="system" width="400"/>
+
+> DS18B20 hand held to see the difference
+
 Install the DHT library bi Adafruit.
 
 Follow the next step to install the ESPAsyncWebServer library:
