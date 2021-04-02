@@ -11,10 +11,15 @@ The purpose of this project is to create a station for monitoring the environmen
   * [Luminous well-being](#luminous-well-being)
   * [Acoustic well-being](#acoustic-well-being)
 - [Project](#project)
+  * [ESP 8622 web server and sensors reading](#esp-8622-web-server-and-sensors-reading)
+      - [DHT](#dht)
+      - [Web server](#web-server)
+      - [DS18B20](#ds18b20)
   * [ESP 32 web server and sensors reading](#esp-32-web-server-and-sensors-reading)
   * [Alexa integrations](#alexa-integrations)
   * [Raspberry Pi web server](#raspberry-pi-web-server)
 - [Future implementations](#future-implementations)
+- [References](#references)
 
 ### Shopping bag
 * DHT11 / DHT22
