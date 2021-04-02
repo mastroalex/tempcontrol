@@ -26,7 +26,7 @@ Follow the next step to install the ESPAsync TCP Library:
 4. Move the ESPAsyncTCP folder to your Arduino IDE installation libraries folder
 Restard Arduino IDE.
 
-The example code is presented in [COMPLETARE LINK AL FILE E SALVARE FILE PERSONALIZZATO DI ESEMPIO SENZA PW WIFI]()
+The example code is presented in [esp8266_weserver.ino](https://github.com/mastroalex/tempcontrol/blob/main/esp8266webserveinfo/esp8266_webserver/esp8266_webserver.ino)
 
 Insert wifi credentials!
 ```c
