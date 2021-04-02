@@ -109,7 +109,7 @@ This is an asynchronous web server that update data automatically without need t
 
 > DS18B20 hand held to see temperature difference
 
-Install the DHT library bi Adafruit.
+Install the DHT library by Adafruit.
 
 Follow the next step to install the ESPAsyncWebServer library:
 1. Download [AsyncWebServer library](https://github.com/me-no-dev/ESPAsyncWebServer/archive/master.zip)
