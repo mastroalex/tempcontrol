@@ -14,10 +14,11 @@ The purpose of this project is to create a station for monitoring the environmen
   * [ESP 8622 web server and sensors reading](#esp-8622-web-server-and-sensors-reading)
       - [DHT](#dht)
       - [Web server](#web-server)
+      - [Add extra sensor data](#add-extra-sensor-data)
       - [DS18B20](#ds18b20)
   * [ESP 32 web server and sensors reading](#esp-32-web-server-and-sensors-reading)
   * [Alexa integrations](#alexa-integrations)
-  * [Raspberry Pi LAMP server](#raspberry-pi-LAMP-server)
+  * [Raspberry Pi LAMP server](#raspberry-pi-lamp-server)
 - [Future implementations](#future-implementations)
 - [References](#references)
 
@@ -227,7 +228,7 @@ It is recommended to print the sensor data on the serial monitor through the `lo
 
 ___
 
-#### Add new sensor data
+#### Add extra sensor data
 
 
 Create variabile for data reading and update it in `loop()`
