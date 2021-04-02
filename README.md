@@ -46,7 +46,7 @@ Sever study show how negative health and well-being outcomes associated with inc
 
 The main factors that influence thermal comfort are those that determine heat gain and loss, namely metabolic rate, clothing insulation, air temperature, mean radiant temperature, air speed and relative humidity. Psychological parameters, such as individual expectations, also affect thermal comfort. The thermal comfort temperature may vary greatly between individuals and depending on factors such as activity level, clothing, and humidity.
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Psychrometric_chart_-_PMV_method.png" alt="psychrometric" width="500"> 
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Psychrometric_chart_-_PMV_method.png" alt="psychrometric" width="700"> 
 
 > From [Wikipedia](https://en.wikipedia.org/wiki/Thermal_comfort#/media/File:Psychrometric_chart_-_PMV_method.png) - This psychrometric chart represents the acceptable combination of air temperature and humidity values, according to the PMV/PPD method in the ASHRAE 55-2010 Standard. The comfort zone in blue represents the 90% of acceptability,
 
@@ -65,7 +65,7 @@ The ability to "see" at work depends not only on lighting but also on:
 - Brightness. Too much or too little reflected light makes objects hard to see.
 - Contrast between an object and its immediate background. Too little contrast makes it hard to distinguish an object from the background.
 
-<img src="https://www.smow.com/pics/g/w/2064/smow-planungsthemen-licht-arbeitsplatz-grafik-lichteinfall-2.jpg" alt="system" width="800"/>
+<img src="https://www.smow.com/pics/g/w/2064/smow-planungsthemen-licht-arbeitsplatz-grafik-lichteinfall-2.jpg" alt="light" width="800"/>
 
 Light sources can be divided between natural light and electrical sources. In the case of electric light sources, different types of light bulbs can produce different effects. The effects range from the warmth of light to energy efficiency to the effect on eyesight to the colour rendering.
 
@@ -76,7 +76,7 @@ There are three basic types of lighting:
 - Localized-general
 - Local (or task).
 
-<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ilepower.com%2Fblogs%2Fblog%2Fthe-three-basic-types-of-lighting&psig=AOvVaw1B3Ts5OYLMU8_2-pl3wGG-&ust=1617485092275000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIDQ_9S_4O8CFQAAAAAdAAAAABAN" alt="system" width="800"/> 
+<img src="https://cdn.shopify.com/s/files/1/0107/2847/2676/files/3_0a4242f8-4aa5-4dbb-81a6-5a2b4b6bec30_grande.jpg?v=1551160494" alt="system" width="800"/> 
 
 Eye discomfort is a general term which can include some or many symptoms. It may be part of “computer vision syndrome” which includes: eyestrain, dry eyes, blurred vision, red or pink eyes, burning, light sensitivity, headaches, and pain in the shoulders, neck and back.
 Eye discomfort symptoms may be caused by: poor lighting, glare on a computer or tablet screen, poor quality computer or tablet screen (e.g., poor resolution, blurry image, etc.), improper viewing distances, poor seating posture, uncorrected vision problems, dry air, air movement, or a combination of these factors.
