@@ -429,9 +429,14 @@ Call in `loop()` the function:
   handleTemperaturesensor(); 
 ```
 #### Alexa
+
 It's possibile to add Sinric Pro skills in Alexa app and login with Sinric credential to add device.
 
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266sinric/alexa_dht_mobileapp.png" alt="alexa_app_dht" width="400">
+
 #### App 
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266sinric/sinric_dht_mobileapp.png" alt="sinric_app_dht" width="400">
 
 It's possibile to download the Sinric Pro App or to login into SinricPro website to visualize sensor data log for different time period. 
 
