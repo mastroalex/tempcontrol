@@ -18,15 +18,19 @@ The purpose of this project is to create a station for monitoring the environmen
       - [DS18B20](#ds18b20)
   * [ESP 32 web server and sensors reading](#esp-32-web-server-and-sensors-reading)
   * [Alexa integrations](#alexa-integrations)
+    + [Sinric Pro Temperature Sensor](#sinric-pro-temperature-sensor)
+      - [ESP8266](#esp8266)
+      - [Alexa](#alexa)
+      - [App](#app)
   * [Raspberry Pi LAMP server](#raspberry-pi-lamp-server)
 - [Future implementations](#future-implementations)
 - [References](#references)
 
 ### Shopping bag
-* DHT11 / DHT22
+* DHT11 / DHT22 / DHT12
 * ESP32
 * ESP8266
-* Raspberry PI
+* Raspberry Pi
 * DS18B20
 * 4.7k Ohm Resistor 
 
