@@ -21,6 +21,8 @@ The purpose of this project is to create a station for monitoring the environmen
 * ESP32
 * ESP8266
 * Raspberry PI
+* DS18B20
+* 4.7k Ohm Resistor 
 
 # Why 
 
@@ -85,6 +87,7 @@ For other info  [DHT11 Reading Example](https://github.com/mastroalex/tempcontro
 #### Web server
 The web server can be accessed with any device that has a browser on your local network.
 This is an asynchronous web server that update data automatically without need to refresh the web page and with custom CSS to style the web page.
+
 <img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266webserveinfo/webserver_example.png" alt="system" width="400"/>
 
 > DS18B20 hand held to see the difference
@@ -117,6 +120,30 @@ For other comment info to [ESP8266 Web Server Extra](https://github.com/mastroal
 > Thanks to Rui Santos. For other information and code comments [DHT11 ESP8266 Web Server](https://randomnerdtutorials.com/esp8266-dht11dht22-temperature-and-humidity-web-server-with-arduino-ide/)
 
 #### DS18B20
+
+Install library for DS18B20: install [OneWire](https://github.com/PaulStoffregen/OneWire) from library manager. Install Dallas Temperature library by Miles Burton from library manager.
+
+Include library and define pin:
+```c
+#include <OneWire.h>
+#include <DallasTemperature.h>
+// GPIO where the DS18B20 is connected to
+const int oneWireBus = D5;     
+```
+Setup comincation:
+```c
+OneWire oneWire(oneWireBus);
+DallasTemperature sensors(&oneWire);
+```
+
+In the setup() section start sensors and serial.
+Request temperature with:
+```c
+sensors.requestTemperatures(); 
+float temperatureC = sensors.getTempCByIndex(0);
+```
+
+For other info [DS18B20 Reading Exampe](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_reading/ds18b20_test)
 
 ##  ESP 32 web server and sensors reading
 
