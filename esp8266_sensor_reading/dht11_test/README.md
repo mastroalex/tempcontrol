@@ -1,6 +1,6 @@
 # Example for testing DHT11/DHT12/DHT22
 ### Schematic
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266_sensor_readiing/dht11_test/dht11test_bb.png" alt="example" width="600"/>
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266_sensor_reading/dht11_test/dht11test_bb.png" alt="example" width="600"/>
 
 ### Code
 
