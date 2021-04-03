@@ -108,7 +108,7 @@ After the fist stage of sensor testing and related library studies the idea is t
 
 The third phase consists to allowing alexa to read temperature with [Sinric](https://sinric.com/login?returnUrl=%2F). This will also allow us to control EPS32  outputs through Alexa vocal commands.
 
-Sinric permit a fists remote reading and logging for sensors data but only for temperature, humidity, air quality and energy consumption. 
+**Sinric permit a fists remote reading and logging for sensors data but only for temperature, humidity, air quality and energy consumption.**
 
 <img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266sinric/sinric_diagram.png" alt="sinriclogdiagram" width="1000"/>
 
@@ -116,7 +116,7 @@ The most important step is to create a LAMP web server on Raspberry Pi and to us
 
 In the following image the block diagram for final configurations:
 
-<img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/09/Raspberry-Pi-LAMP-Server-ESP32-ESP8266-Overview.png?quality=100&strip=all&ssl=1" alt="system" width="700"/>
+<img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/09/Raspberry-Pi-LAMP-Server-ESP32-ESP8266-Overview.png?quality=100&strip=all&ssl=1" alt="system" width="1000"/>
 
 > Image credits [Ed - randomnerdtutorials.com](https://randomnerdtutorials.com/esp32-esp8266-raspberry-pi-lamp-server/)
 
@@ -128,7 +128,7 @@ A last possibility is to open the firewall ports and allow access to the webserv
 
 Another options is to have a domain name and hosting account that allows to store sensor readings from the ESP32 or ESP8266. It's possible to visualize the readings from anywhere in the world by accessing your own server domain.
 
-<img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/08/ESP32-MySQL-Charts-Project-Overview.png?w=750&quality=100&strip=all&ssl=1" alt="system" width="700"/>
+<img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/08/ESP32-MySQL-Charts-Project-Overview.png?w=750&quality=100&strip=all&ssl=1" alt="system" width="1000"/>
 
 ##  ESP 8622 web server and sensors reading
 
