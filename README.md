@@ -110,6 +110,8 @@ The third phase consists to allowing alexa to read temperature with [Sinric](htt
 
 Sinric permit a fists remote reading and logging for sensors data but only for temperature, humidity, air quality and energy consumption. 
 
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266sinric/sinric_diagram.png" alt="sinriclogdiagram" width="1000"/>
+
 The most important step is to create a LAMP web server on Raspberry Pi and to use it to publish data. This also allows us to integrate several EPS32s (e.g. for different rooms) into a single web server.
 
 In the following image the block diagram for final configurations:
