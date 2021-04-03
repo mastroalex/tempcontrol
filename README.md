@@ -116,9 +116,8 @@ The most important step is to create a LAMP web server on Raspberry Pi and to us
 
 In the following image the block diagram for final configurations:
 
-<img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/09/Raspberry-Pi-LAMP-Server-ESP32-ESP8266-Overview.png?quality=100&strip=all&ssl=1" alt="system" width="1000"/>
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/lamp_raspberry.jpg" alt="system" width="1000"/>
 
-> Image credits [Ed - randomnerdtutorials.com](https://randomnerdtutorials.com/esp32-esp8266-raspberry-pi-lamp-server/)
 
 To avoid overloading the LAN network, a radio communication system between raspberry and ESP32 could be developed. Or a radio link could be created between two ESP32s (or any other board similar to Arduino).
 
@@ -128,7 +127,7 @@ A last possibility is to open the firewall ports and allow access to the webserv
 
 Another options is to have a domain name and hosting account that allows to store sensor readings from the ESP32 or ESP8266. It's possible to visualize the readings from anywhere in the world by accessing your own server domain.
 
-<img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/08/ESP32-MySQL-Charts-Project-Overview.png?w=750&quality=100&strip=all&ssl=1" alt="system" width="1000"/>
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/web_server.jpg" alt="system" width="1000"/>
 
 ##  ESP 8622 web server and sensors reading
 
@@ -536,6 +535,10 @@ This code will be integrated with that of the web server.
 
 
 # Future implementations
+
+# Contributors 
+
+- Graphic Design - @Alina Elena Mihai
 
 # References 
 - [ESP32/ESP8266 Publish Data to Raspberry Pi LAMP Server](https://randomnerdtutorials.com/esp32-esp8266-raspberry-pi-lamp-server/)
