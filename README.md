@@ -24,8 +24,19 @@ The purpose of this project is to create a station for monitoring the environmen
       - [Alexa](#alexa)
       - [App](#app)
   * [Raspberry Pi LAMP server](#raspberry-pi-lamp-server)
+    + [Preparing MySQL Database](#preparing-mysql-database)
+    + [Preparing Your ESP32 or ESP8266](#preparing-your-esp32-or-esp8266)
   * [Private domanin](#private-domanin)
+    + [Hosting Your PHP Application and MySQL Database](#hosting-your-php-application-and-mysql-database)
+    + [Preparing yout MySQL Database](#preparing-yout-mysql-database)
+    + [Creating a SQL table](#creating-a-sql-table)
+    + [PHP Script HTTP POST – Insert Data in MySQL Database](#php-script-http-post---insert-data-in-mysql-database)
+    + [PHP Script – Visualize Database Content in a Chart](#php-script---visualize-database-content-in-a-chart)
+    + [Preparing Your ESP32 or ESP8266](#preparing-your-esp32-or-esp8266-1)
+    + [Code complete](#code-complete)
 - [Future implementations](#future-implementations)
+- [Other project](#other-project)
+- [Contributors](#contributors)
 - [References](#references)
 
 ### Shopping bag
@@ -519,14 +530,741 @@ This code will be integrated with that of the web server.
 
 **The following has been taken from [ESP32/ESP8266 Publish Data to Raspberry Pi LAMP Server](https://randomnerdtutorials.com/esp32-esp8266-raspberry-pi-lamp-server/) and not yet revised**
 
+### Preparing MySQL Database
+
+After installing a LAMP server and phpMyAdmin on Raspberry Pi, you can login into phpMyAdmin. After that, follow the next steps to create your database and SQL table.
+
+Open your browser and type `http://Your-Raspberry-Pi-IP-Address/phpmyadmin`, your should see the login page for phpMyAdmin web interface.
+
+**Create Database**
+
+Select the “Databases” menu at the top, complete the “Create database” fields:
+- esp_data
+- utf8mb4_general_ci
+
+Then, press the Create button:
+
+That’s it! Your new database was created successfully. Now, save your database name because you’ll need it later:
+
+- Database name: `esp_data`
+
+**Creating a SQL table**
+
+After creating your database, in the left sidebar select your database name `esp_data`:
+
+Raspberry Pi phpMyAdmin open new database
+
+> Important: make sure you’ve opened the `esp_data` database. Then, click the SQL tab. If you don’t follow these exact steps and run the SQL query, you might create a table in the wrong database.
+
+Copy the SQL query in the following snippet:
+
+```sql
+CREATE TABLE SensorData (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    sensor VARCHAR(30) NOT NULL,
+    location VARCHAR(30) NOT NULL,
+    value1 VARCHAR(10),
+    value2 VARCHAR(10),
+    value3 VARCHAR(10),
+    reading_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+```
+
+Open the “SQL” tab, paste it in the SQL query field (highlighted with a red rectangle) and press the Go button to create your table:
+
+Raspberry Pi phpMyAdmin run SQL table created.
+
+After that, you should see your newly created table called `SensorData` in the `esp_data` database.
+
+Raspberry Pi phpMyAdmin table created empty
+
+**PHP Script HTTP POST – Insert Data in MySQL Database**
+
+In this section, we’re going to create a PHP script that is responsible for receiving incoming requests from the ESP32 or ESP8266 and inserting the data into a MySQL database.
+
+You can either run the next commands on a Raspberry Pi set as a desktop computer or using an SSH connection.
+
+If you’re connected to your Raspberry Pi with an SSH connection, type the next command to create a file in `/var/www/html` directory:
+
+```
+pi@raspberrypi:~ $ nano /var/www/html/post-esp-data.php
+```
+> Note: if you’re following this tutorial and you’re not familiar with PHP or MySQL, I recommend creating these exact files. Otherwise, you’ll need to modify the ESP sketch provided with different URL paths.
+
+Copy the following PHP script to the newly created file (`post-esp-data.php`):
+
+```php
+<?php
+
+/*
+  Rui Santos
+  Complete project details at https://RandomNerdTutorials.com/esp32-esp8266-mysql-database-php/
+  
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files.
+  
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+*/
+
+$servername = "localhost";
+
+// REPLACE with your Database name
+$dbname = "REPLACE_WITH_YOUR_DATABASE_NAME";
+// REPLACE with Database user
+$username = "REPLACE_WITH_YOUR_USERNAME";
+// REPLACE with Database user password
+$password = "REPLACE_WITH_YOUR_PASSWORD";
+
+// Keep this API Key value to be compatible with the ESP32 code provided in the project page. 
+// If you change this value, the ESP32 sketch needs to match
+$api_key_value = "tPmAT5Ab3j7F9";
+
+$api_key= $sensor = $location = $value1 = $value2 = $value3 = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $api_key = test_input($_POST["api_key"]);
+    if($api_key == $api_key_value) {
+        $sensor = test_input($_POST["sensor"]);
+        $location = test_input($_POST["location"]);
+        $value1 = test_input($_POST["value1"]);
+        $value2 = test_input($_POST["value2"]);
+        $value3 = test_input($_POST["value3"]);
+        
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        } 
+        
+        $sql = "INSERT INTO SensorData (sensor, location, value1, value2, value3)
+        VALUES ('" . $sensor . "', '" . $location . "', '" . $value1 . "', '" . $value2 . "', '" . $value3 . "')";
+        
+        if ($conn->query($sql) === TRUE) {
+            echo "New record created successfully";
+        } 
+        else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    
+        $conn->close();
+    }
+    else {
+        echo "Wrong API Key provided.";
+    }
+
+}
+else {
+    echo "No data posted with HTTP POST.";
+}
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+```
+
+Before saving the file, you need to modify the `$dbname`, `$username` and `$password` variables with your unique details:
+
+```php
+// Your Database name
+$dbname = "esp_data";
+// Your Database user
+$username = "root";
+// Your Database user password
+$password = "YOUR_USER_PASSWORD";
+```
+
+After adding the database name, username and password, save the file (Ctrl+X, y, and Enter key) and continue with this tutorial. 
+
+**PHP Script – Display Database Content**
+
+Create another PHP file in the `/var/www/html` directory that will display all the database content in a web page. Name your new file: ```esp-data.php```
+
+```
+pi@raspberrypi:~ $ nano /var/www/html/esp-data.php
+```
+Edit the newly created file (esp-data.php) and copy the following PHP script:
+
+```php
+<!DOCTYPE html>
+<html><body>
+<?php
+/*
+  Rui Santos
+  Complete project details at https://RandomNerdTutorials.com/esp32-esp8266-mysql-database-php/
+  
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files.
+  
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+*/
+
+$servername = "localhost";
+
+// REPLACE with your Database name
+$dbname = "REPLACE_WITH_YOUR_DATABASE_NAME";
+// REPLACE with Database user
+$username = "REPLACE_WITH_YOUR_USERNAME";
+// REPLACE with Database user password
+$password = "REPLACE_WITH_YOUR_PASSWORD";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "SELECT id, sensor, location, value1, value2, value3, reading_time FROM SensorData ORDER BY id DESC";
+
+echo '<table cellspacing="5" cellpadding="5">
+      <tr> 
+        <td>ID</td> 
+        <td>Sensor</td> 
+        <td>Location</td> 
+        <td>Value 1</td> 
+        <td>Value 2</td>
+        <td>Value 3</td> 
+        <td>Timestamp</td> 
+      </tr>';
+ 
+if ($result = $conn->query($sql)) {
+    while ($row = $result->fetch_assoc()) {
+        $row_id = $row["id"];
+        $row_sensor = $row["sensor"];
+        $row_location = $row["location"];
+        $row_value1 = $row["value1"];
+        $row_value2 = $row["value2"]; 
+        $row_value3 = $row["value3"]; 
+        $row_reading_time = $row["reading_time"];
+        // Uncomment to set timezone to - 1 hour (you can change 1 to any number)
+        //$row_reading_time = date("Y-m-d H:i:s", strtotime("$row_reading_time - 1 hours"));
+      
+        // Uncomment to set timezone to + 4 hours (you can change 4 to any number)
+        //$row_reading_time = date("Y-m-d H:i:s", strtotime("$row_reading_time + 4 hours"));
+      
+        echo '<tr> 
+                <td>' . $row_id . '</td> 
+                <td>' . $row_sensor . '</td> 
+                <td>' . $row_location . '</td> 
+                <td>' . $row_value1 . '</td> 
+                <td>' . $row_value2 . '</td>
+                <td>' . $row_value3 . '</td> 
+                <td>' . $row_reading_time . '</td> 
+              </tr>';
+    }
+    $result->free();
+}
+
+$conn->close();
+?> 
+</table>
+</body>
+</html>
+```
+
+Add the `$dbname`, `$username` and `$password`:
+
+```php
+// Your Database name
+$dbname = "esp_data";
+// Your Database user
+$username = "root";
+// Your Database user password
+$password = "YOUR_USER_PASSWORD";
+```
+Save the file (Ctrl+X, y, and Enter key) and continue with this project.
+
+If you try to access your Raspberry Pi IP Address in the following URL path: 
+
+`http://Your-Raspberry-Pi-IP-Address/esp-data.php` 
+
+That’s it! If you see that empty table printed in your browser, it means that everything is ready. In the next section, you’ll learn how to insert data from your ESP32 or ESP8266 into the database.
+
+### Preparing Your ESP32 or ESP8266
+
+We’ll program the ESP32/ESP8266 using Arduino IDE, so you must have the ESP32/ESP8266 add-on installed in your Arduino IDE. Follow one of the next tutorials depending on the board you’re using:
+
+- Install the ESP32 Board in Arduino IDE  
+- Install the ESP8266 Board in Arduino IDE
+
+After installing the necessary board add-ons, copy the following code to your Arduino IDE, but don’t upload it yet. You need to make some changes to make it work for you.
+
+
+Setting network credentials how indicated in webserver section.
+
+**Setting your serverName**
+
+You also need to type your Raspberry Pi IP address, so the ESP publishes the readings to your LAMP server.
+```c
+const char* serverName = "http://Your-Raspberry-Pi-IP-Address/post-esp-data.php";
+```
+
+For example:
+```c
+const char* serverName = "http://192.168.1.86/post-esp-data.php";
+```
+
+Now, you can upload the code to your board. It should work straight away both in the ESP32 or ESP8266 board. If you want to learn how the code works, read the next section.
+
+**How the code works**
+
+This project is already quite long, so we won’t cover in detail how the code works, but here’s a quick summary:
+
+- Import all the libraries to make it work (it will import either the `ESP32` or `ESP8266` libraries based on the selected board in your Arduino IDE)
+- Set variables that you might want to change (`apiKeyValue`, `sensorName`, `sensorLocation`)
+- The `apiKeyValue` is just a random string that you can modify. It’s used for security reasons, so only anyone that knows your API key can publish data to your database
+- Initialize the serial communication for debugging purposes
+- Establish a Wi-Fi connection with your router
+- Initialize the BME280 to get readings
+
+Then, in the `loop()` is where you actually make the HTTP POST request every 30 seconds with the latest sensor readings:
+
+```c
+// Your Domain name with URL path or IP address with path
+http.begin(serverName);
+
+// Specify content-type header
+http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+
+// Prepare your HTTP POST request data
+String httpRequestData = "api_key=" + apiKeyValue + "&sensor=" + sensorName                      + "&location=" + sensorLocation + "&value1=" + String(bme.readTemperature())                      + "&value2=" + String(bme.readHumidity()) + "&value3=" + String(bme.readPressure()/100.0F) + "";
+
+int httpResponseCode = http.POST(httpRequestData);
+```
+
+You can comment the `httpRequestData` variable above that concatenates all the sensors readings and use the `httpRequestData` variable below for testing purposes:
+
+```c
+String httpRequestData = "api_key=tPmAT5Ab3j7F9&sensor=BME280&location=Office&value1=24.75&value2=49.54&value3=1005.14";
+```
+
+After completing all the steps, let your ESP board collect some readings and publish them to your server.
+
+
+For other information [randomnertutorials.com](https://randomnerdtutorials.com/esp32-esp8266-raspberry-pi-lamp-server/)
+
 --- 
-
-
 
 ## Private domanin 
 
 
 **The following has been taken from [Visualize Your Sensor Readings from Anywhere in the World](https://randomnerdtutorials.com/visualize-esp32-esp8266-sensor-readings-from-anywhere/) and not yet revised**
+
+### Hosting Your PHP Application and MySQL Database 
+
+The goal of this project is to have your own domain name and hosting account that allows you to store sensor readings from the ESP32 or ESP8266. You can visualize the readings from anywhere in the world by accessing your own server domain. 
+
+In this guide is used Siteground hosting.
+
+### Preparing yout MySQL Database
+
+After signing up for a hosting account and setting up a domain name, you can login to your cPanel or similar dashboard. After that, follow the next steps to create your database, username, password and SQL table.
+
+In my case, the database name is `esp_data`. Then, press the “Next Step” button:
+
+Note: later you’ll have to use the database name with the prefix that your host gives you (my database prefix in the screenshot above is blurred). I’ll refer to it as `example_esp_data` from now on.
+
+Type your Database `username` and set a `password`. You must save all those details, because you’ll need them later to establish a database connection with your PHP code.
+
+That’s it! Your new database and user were created successfully. Now, save all your details because you’ll need them later:
+
+- **Database name**: example_esp_data
+- **Username**: example_esp_board
+- **Password**: your password
+
+### Creating a SQL table
+
+After creating your database and user, go back to cPanel dashboard and search for “phpMyAdmin”. 
+
+In the left sidebar, select your database name `example_esp_data` and open the “SQL” tab
+
+> Important: make sure you’ve opened the `example_esp_data` database. Then, click the SQL tab. If you don’t follow these exact steps and run the SQL query, you might create a table in the wrong database.
+
+Copy the SQL query in the following snippet:
+
+```sql
+CREATE TABLE Sensor (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    value1 VARCHAR(10),
+    value2 VARCHAR(10),
+    value3 VARCHAR(10),
+    reading_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+```
+
+After that, you should see your newly created table called `Sensor` in the `example_esp_data` database as shown in the figure below:
+
+### PHP Script HTTP POST – Insert Data in MySQL Database
+
+In this section, we’re going to create a PHP script that receives incoming requests from the ESP32 or ESP8266 and inserts the data into a MySQL database.
+
+If you’re using a hosting provider with cPanel, you can search for “File Manager”.
+
+Then, select the `public_html` option and press the “+ File” button to create a new .php file.
+
+> Note: if you’re following this tutorial and you’re not familiar with PHP or MySQL, I recommend creating these exact files. Otherwise, you’ll need to modify the ESP sketch provided with different URL paths.
+
+Create a new file in `/public_html` with this exact name and extension: `post-data.php`
+
+PHP Create New file post data .php
+Edit the newly created file (post-data.php) and copy the following snippet:
+```php
+
+<?php
+/*
+  Rui Santos
+  Complete project details at https://RandomNerdTutorials.com
+  
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files.
+  
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+*/
+
+$servername = "localhost";
+
+// REPLACE with your Database name
+$dbname = "REPLACE_WITH_YOUR_DATABASE_NAME";
+// REPLACE with Database user
+$username = "REPLACE_WITH_YOUR_USERNAME";
+// REPLACE with Database user password
+$password = "REPLACE_WITH_YOUR_PASSWORD";
+
+// Keep this API Key value to be compatible with the ESP32 code provided in the project page. If you change this value, the ESP32 sketch needs to match
+$api_key_value = "tPmAT5Ab3j7F9";
+
+$api_key = $value1 = $value2 = $value3 = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $api_key = test_input($_POST["api_key"]);
+    if($api_key == $api_key_value) {
+        $value1 = test_input($_POST["value1"]);
+        $value2 = test_input($_POST["value2"]);
+        $value3 = test_input($_POST["value3"]);
+        
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        } 
+        
+        $sql = "INSERT INTO Sensor (value1, value2, value3)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "')";
+        
+        if ($conn->query($sql) === TRUE) {
+            echo "New record created successfully";
+        } 
+        else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    
+        $conn->close();
+    }
+    else {
+        echo "Wrong API Key provided.";
+    }
+
+}
+else {
+    echo "No data posted with HTTP POST.";
+}
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+```
+
+Before saving the file, you need to modify the `$dbname`, `$username` and `$password` variables with your unique details:
+
+```php
+
+// Your Database name
+$dbname = "example_esp_data";
+// Your Database user
+$username = "example_esp_board";
+// Your Database user password
+$password = "YOUR_USER_PASSWORD";
+```
+
+After adding the database name, username and password, save the file and continue with this tutorial. If you try to access your domain name in the next URL path, you’ll see the message:
+```
+http://example.com/post-data.php
+```
+
+### PHP Script – Visualize Database Content in a Chart
+
+Create another PHP file in the `/public_html` directory that will plot the database content in a chart on a web page. Name your new file: `esp-chart.php`
+
+Edit the newly created file (`esp-chart.php`) and copy the following code:
+
+```php
+<!--
+  Rui Santos
+  Complete project details at https://RandomNerdTutorials.com
+  
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files.
+  
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+-->
+<?php
+
+$servername = "localhost";
+
+// REPLACE with your Database name
+$dbname = "REPLACE_WITH_YOUR_DATABASE_NAME";
+// REPLACE with Database user
+$username = "REPLACE_WITH_YOUR_USERNAME";
+// REPLACE with Database user password
+$password = "REPLACE_WITH_YOUR_PASSWORD";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "SELECT id, value1, value2, value3, reading_time FROM Sensor order by reading_time desc limit 40";
+
+$result = $conn->query($sql);
+
+while ($data = $result->fetch_assoc()){
+    $sensor_data[] = $data;
+}
+
+$readings_time = array_column($sensor_data, 'reading_time');
+
+// ******* Uncomment to convert readings time array to your timezone ********
+/*$i = 0;
+foreach ($readings_time as $reading){
+    // Uncomment to set timezone to - 1 hour (you can change 1 to any number)
+    $readings_time[$i] = date("Y-m-d H:i:s", strtotime("$reading - 1 hours"));
+    // Uncomment to set timezone to + 4 hours (you can change 4 to any number)
+    //$readings_time[$i] = date("Y-m-d H:i:s", strtotime("$reading + 4 hours"));
+    $i += 1;
+}*/
+
+$value1 = json_encode(array_reverse(array_column($sensor_data, 'value1')), JSON_NUMERIC_CHECK);
+$value2 = json_encode(array_reverse(array_column($sensor_data, 'value2')), JSON_NUMERIC_CHECK);
+$value3 = json_encode(array_reverse(array_column($sensor_data, 'value3')), JSON_NUMERIC_CHECK);
+$reading_time = json_encode(array_reverse($readings_time), JSON_NUMERIC_CHECK);
+
+/*echo $value1;
+echo $value2;
+echo $value3;
+echo $reading_time;*/
+
+$result->free();
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <style>
+    body {
+      min-width: 310px;
+    	max-width: 1280px;
+    	height: 500px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-family: Arial;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <h2>ESP Weather Station</h2>
+    <div id="chart-temperature" class="container"></div>
+    <div id="chart-humidity" class="container"></div>
+    <div id="chart-pressure" class="container"></div>
+<script>
+
+var value1 = <?php echo $value1; ?>;
+var value2 = <?php echo $value2; ?>;
+var value3 = <?php echo $value3; ?>;
+var reading_time = <?php echo $reading_time; ?>;
+
+var chartT = new Highcharts.Chart({
+  chart:{ renderTo : 'chart-temperature' },
+  title: { text: 'BME280 Temperature' },
+  series: [{
+    showInLegend: false,
+    data: value1
+  }],
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: true }
+    },
+    series: { color: '#059e8a' }
+  },
+  xAxis: { 
+    type: 'datetime',
+    categories: reading_time
+  },
+  yAxis: {
+    title: { text: 'Temperature (Celsius)' }
+    //title: { text: 'Temperature (Fahrenheit)' }
+  },
+  credits: { enabled: false }
+});
+
+var chartH = new Highcharts.Chart({
+  chart:{ renderTo:'chart-humidity' },
+  title: { text: 'BME280 Humidity' },
+  series: [{
+    showInLegend: false,
+    data: value2
+  }],
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: true }
+    }
+  },
+  xAxis: {
+    type: 'datetime',
+    //dateTimeLabelFormats: { second: '%H:%M:%S' },
+    categories: reading_time
+  },
+  yAxis: {
+    title: { text: 'Humidity (%)' }
+  },
+  credits: { enabled: false }
+});
+
+
+var chartP = new Highcharts.Chart({
+  chart:{ renderTo:'chart-pressure' },
+  title: { text: 'BME280 Pressure' },
+  series: [{
+    showInLegend: false,
+    data: value3
+  }],
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: true }
+    },
+    series: { color: '#18009c' }
+  },
+  xAxis: {
+    type: 'datetime',
+    categories: reading_time
+  },
+  yAxis: {
+    title: { text: 'Pressure (hPa)' }
+  },
+  credits: { enabled: false }
+});
+
+</script>
+</body>
+</html>
+```
+
+After adding the `$dbname`, `$username` and `$password` save the file and continue with this project.
+
+```php
+// Your Database name
+$dbname = "example_esp_data";
+// Your Database user
+$username = "example_esp_board";
+// Your Database user password
+$password = "YOUR_USER_PASSWORD";
+```
+
+Try to access your domain name in the following URL path:
+
+```
+http://example.com/esp-chart.php
+```
+
+That’s it! If you see three empty charts in your browser, it means that everything is ready. In the next section, you’ll learn how to publish your ESP32 or ESP8266 sensor readings.
+
+To build the charts, we’ll use the [Highcharts library](https://www.highcharts.com/docs/). We’ll create three charts: temperature, humidity and pressure over time. The charts display a maximum of 40 data points, and a new reading is added every 30 seconds, but you change these values in your code.
+
+### Preparing Your ESP32 or ESP8266
+
+
+After installing the necessary board add-ons, copy the code to your Arduino IDE, but don’t upload it yet. You need to make some changes to make it work for you.
+
+Setting network credentials how indicated in webserver section.
+
+**Setting your serverName**
+
+You also need to type your domain name, so the ESP publishes the readings to your own server.
+
+```c
+const char* serverName = "http://example.com/post-data.php";
+```
+
+Now, you can upload the code to your board. It should work straight away both in the ESP32 or ESP8266 board. If you want to learn how the code works, read the next section.
+
+**How the code works**
+
+This project is already quite long, so we won’t cover in detail how the code works, but here’s a quick summary:
+
+- Import all the libraries to make it work (it will import either the ESP32 or ESP8266 libraries based on the selected board in your Arduino IDE)
+- Set variables that you might want to change (`apiKeyValue`)
+- The `apiKeyValue` is just a random string that you can modify. It’s used for security reasons, so only anyone that knows your API key can publish data to your database
+- Initialize the serial communication for debugging purposes
+- Establish a Wi-Fi connection with your router
+- Initialize the sensor to get readings
+
+Then, in the `loop()` is where you actually make the HTTP POST request every 30 seconds with the latest BME280 readings:
+
+```c
+// Your Domain name with URL path or IP address with path
+http.begin(serverName);
+
+// Specify content-type header
+http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+
+// Prepare your HTTP POST request data
+String httpRequestData = "api_key=" + apiKeyValue + "&value1=" 
+                       + String(bme.readTemperature()) 
+                       + "&value2=" + String(bme.readHumidity()) 
+                       + "&value3=" + String(bme.readPressure()/100.0F) + "";
+
+int httpResponseCode = http.POST(httpRequestData);
+```
+
+### Code complete
+
+After completing all the steps, let your ESP board collect some readings and publish them to your server.
+
+If everything is correct, you should see data in Arduino IDE Serial Monitor.
+
+If you open your domain name in this URL path:
+```
+http://example.com/esp-chart.php
+```
+
+You should see the all the readings stored in your database. Refresh the web page to see the latest readings:
+
+
+<img src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/08/esp32-esp8266-publishing-readings-to-MySQL-database-open-visualize-plot-charts.png?quality=100&strip=all&ssl=1" alt="esp32" width="700"/>
+
+ 
+You can also go to phpMyAdmin to manage the data stored in your Sensor table. You can delete it, edit, etc…
+
+> Thanks to [randomnerdtutorials.com](https://randomnerdtutorials.com/visualize-esp32-esp8266-sensor-readings-from-anywhere/)
 
 --- 
 
@@ -535,6 +1273,11 @@ This code will be integrated with that of the web server.
 
 
 # Future implementations
+
+# Other project
+
+- [TCS - Solar Heating Control Unit](https://github.com/mastroalex/TCS)
+
 
 # Contributors 
 
