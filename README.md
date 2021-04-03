@@ -26,12 +26,14 @@ The purpose of this project is to create a station for monitoring the environmen
       - [App](#app)
   * [Raspberry Pi LAMP server](#raspberry-pi-lamp-server)
     + [Preparing MySQL Database](#preparing-mysql-database)
+    + [PHP Script HTTP POST – Insert Data in MySQL Database](#php-script-http-post---insert-data-in-mysql-database)
+    + [PHP Script – Display Database Content](#php-script---display-database-content)
     + [Preparing Your ESP32 or ESP8266](#preparing-your-esp32-or-esp8266)
   * [Private domanin](#private-domanin)
     + [Hosting Your PHP Application and MySQL Database](#hosting-your-php-application-and-mysql-database)
-    + [Preparing yout MySQL Database](#preparing-yout-mysql-database)
+    + [Preparing your MySQL Database](#preparing-your-mysql-database)
     + [Creating a SQL table](#creating-a-sql-table)
-    + [PHP Script HTTP POST – Insert Data in MySQL Database](#php-script-http-post---insert-data-in-mysql-database)
+    + [PHP Script HTTP POST – Insert Data in MySQL Database](#php-script-http-post---insert-data-in-mysql-database-1)
     + [PHP Script – Visualize Database Content in a Chart](#php-script---visualize-database-content-in-a-chart)
     + [Preparing Your ESP32 or ESP8266](#preparing-your-esp32-or-esp8266-1)
     + [Code complete](#code-complete)
@@ -579,7 +581,7 @@ After that, you should see your newly created table called `SensorData` in the `
 
 Raspberry Pi phpMyAdmin table created empty
 
-**PHP Script HTTP POST – Insert Data in MySQL Database**
+### PHP Script HTTP POST – Insert Data in MySQL Database
 
 In this section, we’re going to create a PHP script that is responsible for receiving incoming requests from the ESP32 or ESP8266 and inserting the data into a MySQL database.
 
@@ -681,7 +683,7 @@ $password = "YOUR_USER_PASSWORD";
 
 After adding the database name, username and password, save the file (Ctrl+X, y, and Enter key) and continue with this tutorial. 
 
-**PHP Script – Display Database Content**
+### PHP Script – Display Database Content
 
 Create another PHP file in the `/var/www/html` directory that will display all the database content in a web page. Name your new file: ```esp-data.php```
 
@@ -863,7 +865,7 @@ The goal of this project is to have your own domain name and hosting account tha
 
 In this guide is used Siteground hosting.
 
-### Preparing yout MySQL Database
+### Preparing your MySQL Database
 
 After signing up for a hosting account and setting up a domain name, you can login to your cPanel or similar dashboard. After that, follow the next steps to create your database, username, password and SQL table.
 
