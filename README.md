@@ -1449,11 +1449,11 @@ So the code look like this:
 $servername = "localhost";
 
 // REPLACE with your Database name
-$dbname = "dbtf9kugalge8g";
+$dbname = "DATABASE_NAME";
 // REPLACE with Database user
-$username = "uzzhmw3riqmqy";
+$username = "USER_NAME";
 // REPLACE with Database user password
-$password = "*d5%2^:o4@B@";
+$password = "PASSWORD";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
