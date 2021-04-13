@@ -1656,7 +1656,7 @@ Copy `post-data.php` into new file like `post-data1.php` and change table name.
 
 ```php
 $sql = "INSERT INTO Sensor2 (value5, value6)
-        VALUES ('" . $value1 . "', '" . $value2 . "')";
+        VALUES ('" . $value5 . "', '" . $value6 . "')";
 ```
 Change also `serverName` in the ESP8266 sketch.
 ```c
