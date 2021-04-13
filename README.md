@@ -1334,8 +1334,32 @@ You can also go to phpMyAdmin to manage the data stored in your Sensor table. Yo
 
 #### Send data from another ESP8266
 
-INSERT NEW VALUE 
+Just load the same code and edit the following part in the `loop()` :
 
+```c
+if (dt>= t3) {
+      // Prepare your HTTP POST request data
+      String httpRequestData = "api_key=" + apiKeyValue + "&value3=" + String(t)
+                               + "&value4=" + String(h)  + "";
+      Serial.print("httpRequestData: ");
+      Serial.println(httpRequestData);
+
+      if (httpResponseCode > 0) {
+        Serial.print("HTTP Response code: ");
+        Serial.println(httpResponseCode);
+      }
+      else {
+        Serial.print("Error code: ");
+        Serial.println(httpResponseCode);
+      }
+      t2=millis();
+    }
+    // Free resources
+    http.end();
+  }
+```
+
+Only for testing it is recommended to reduce `t3` time to 3000 ms. After testing reset it to 300000 (5 minutes).
 
 #### Add new column in table
 
@@ -1363,7 +1387,7 @@ Add `value4` in the initial section:
 $api_key = $value1 = $value2 = $value3 = $value4 = "";
 ```
 
-Add in the if cycle:
+Add it in the `if` cycle:
 ```php
 if($api_key == $api_key_value) {
         $value1 = test_input($_POST["value1"]);
@@ -1392,9 +1416,223 @@ if($api_key == $api_key_value) {
     }
 ```
 
-Do it for all the extra value.
+Do it for all the extra values.
+
+Before continue and add chart verify in phpMyAdmin that the table is correctly upgrade with new values.
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/phpmyadmin1.png" alt="php" width="1000">
+
+> In this screen there are no values for `value1` and `value2` because they are set to update every 5 minutes instead of `value3` and `value4` which update every 3 seconds. It is for testing purposes only.
 
 #### Add new graph
+
+To add new chart edit `esp-chart.php`.
+
+1. Just add `value4`in the section where is also `value1`, `value2`and `value4`.
+
+2. Duplicate the `<div>` container.
+
+3. Duplicate the Javscript section and set parameters.
+
+> **Warning!** Select a number of maximum values that are actually in the table otherwise the graph will give problems. 
+```php
+$sql = "SELECT id, value1, value2, value3, value4, reading_time FROM Sensor order by reading_time desc limit 400";
+```
+Set a low number and increase progressively(otherwise check how many values there are from the table).
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/finalchart.png" alt="php" width="1000">
+
+So the code look like this:
+```php
+<?php
+
+$servername = "localhost";
+
+// REPLACE with your Database name
+$dbname = "dbtf9kugalge8g";
+// REPLACE with Database user
+$username = "uzzhmw3riqmqy";
+// REPLACE with Database user password
+$password = "*d5%2^:o4@B@";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "SELECT id, value1, value2, value3, value4, reading_time FROM Sensor order by reading_time desc limit 400";
+
+$result = $conn->query($sql);
+
+while ($data = $result->fetch_assoc()){
+    $sensor_data[] = $data;
+}
+
+$readings_time = array_column($sensor_data, 'reading_time');
+
+$value1 = json_encode(array_reverse(array_column($sensor_data, 'value1')), JSON_NUMERIC_CHECK);
+$value2 = json_encode(array_reverse(array_column($sensor_data, 'value2')), JSON_NUMERIC_CHECK);
+$value3 = json_encode(array_reverse(array_column($sensor_data, 'value3')), JSON_NUMERIC_CHECK);
+$value4 = json_encode(array_reverse(array_column($sensor_data, 'value4')), JSON_NUMERIC_CHECK);
+
+$reading_time = json_encode(array_reverse($readings_time), JSON_NUMERIC_CHECK);
+$result->free();
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/data.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <style>
+    body {
+      min-width: 310px;
+    	max-width: 1280px;
+    	height: 500px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-family: Arial;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <h2>Temp control</h2>
+    <div id="chart-temperature" class="container"></div>
+    <div id="chart-humidity" class="container"></div>
+    <div id="chart-temperature2" class="container"></div>
+    <div id="chart-humidity2" class="container"></div>
+
+
+<script>
+
+var value1 = <?php echo $value1; ?>;
+var value2 = <?php echo $value2; ?>;
+var value3 = <?php echo $value3; ?>;
+var value4 = <?php echo $value4; ?>;
+var reading_time = <?php echo $reading_time; ?>;
+
+
+
+var chartT = new Highcharts.Chart({
+  chart:{ renderTo : 'chart-temperature',
+        zoomType: 'x',
+        panning: true,
+        panKey: 'shift' },
+  title: { text: 'Temperatura camera Ale' },
+  series: [{
+    showInLegend: false,
+    data: value1
+  }],
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: true }
+    },
+    series: { color: '#059e8a' }
+  },
+  xAxis: { 
+    type: 'datetime',
+    categories: reading_time
+  },
+  yAxis: {
+    title: { text: 'Temperature (Celsius)' }
+    //title: { text: 'Temperature (Fahrenheit)' }
+  },
+  credits: { enabled: false }
+});
+
+var chartH = new Highcharts.Chart({
+  chart:{ renderTo:'chart-humidity2',
+           zoomType: 'x',
+           panning: true,
+           panKey: 'shift'},
+  title: { text: 'Umidità camera Ale' },
+  series: [{
+    showInLegend: false,
+    data: value4
+  }],
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: true }
+    }
+  },
+  xAxis: {
+    type: 'datetime',
+    //dateTimeLabelFormats: { second: '%H:%M:%S' },
+    categories: reading_time
+  },
+  yAxis: {
+    title: { text: 'Humidity (%)' }
+  },
+  credits: { enabled: false }
+});
+
+var chartH = new Highcharts.Chart({
+  chart:{ renderTo:'chart-humidity',
+           zoomType: 'x',
+           panning: true,
+           panKey: 'shift'},
+  title: { text: 'Umidità camera Ale' },
+  series: [{
+    showInLegend: false,
+    data: value2
+  }],
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: true }
+    }
+  },
+  xAxis: {
+    type: 'datetime',
+    //dateTimeLabelFormats: { second: '%H:%M:%S' },
+    categories: reading_time
+  },
+  yAxis: {
+    title: { text: 'Humidity (%)' }
+  },
+  credits: { enabled: false }
+});
+
+
+var chartT = new Highcharts.Chart({
+  chart:{ renderTo : 'chart-temperature2',
+        zoomType: 'x',
+        panning: true,
+        panKey: 'shift' },
+  title: { text: 'Temperatura cucina' },
+  series: [{
+    showInLegend: false,
+    data: value3
+  }],
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: true }
+    },
+    series: { color: '#059e8a' }
+  },
+  xAxis: { 
+    type: 'datetime',
+    categories: reading_time
+  },
+  yAxis: {
+    title: { text: 'Temperature (Celsius)' }
+    //title: { text: 'Temperature (Fahrenheit)' }
+  },
+  credits: { enabled: false }
+});
+</script>
+</body>
+</html>
+
+```
 
 #### Graph 
 
