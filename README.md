@@ -1334,8 +1334,65 @@ You can also go to phpMyAdmin to manage the data stored in your Sensor table. Yo
 
 #### Send data from another ESP8266
 
+INSERT NEW VALUE 
+
 
 #### Add new column in table
+
+To add new column login in phpMyAdmin, go to the left sidebar and click the name of the database table you want to add a column to.
+
+Click on `Structure`and there is `aggiungi # campo`.
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/phpmyadmin1.png" alt="php" width="1000">
+
+Enter the number of columns and select location. Than click go.
+
+Insert column detail:
+- Name: `value4`
+- Type:`VARCHAR`
+- Length/values: `10`
+- Collation: `utf8mb4_general_ci	`
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/phpmyadmin1.png" alt="php" width="1000">
+
+#### Modify post-data.php
+
+Add `value4` in the initial section:
+```php
+
+$api_key = $value1 = $value2 = $value3 = $value4 = "";
+```
+
+Add in the if cycle:
+```php
+if($api_key == $api_key_value) {
+        $value1 = test_input($_POST["value1"]);
+        $value2 = test_input($_POST["value2"]);
+        $value3 = test_input($_POST["value3"]);
+        $value4 = test_input($_POST["value4"]);
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        } 
+        
+        $sql = "INSERT INTO Sensor (value1, value2, value3, value4)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "','" . $value4 . "')";
+        
+        if ($conn->query($sql) === TRUE) {
+            echo "New record created successfully";
+        } 
+        else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    
+        $conn->close();
+    }
+```
+
+Do it for all the extra value.
 
 #### Add new graph
 
@@ -1408,10 +1465,13 @@ It work also on mobile device.
 
 - @mastroalex
 - Graphic Design - @Alina Elena Mihai
-- Hosting and server setting @letoinformatics
-- Supplies of material and technical help @termoclimaservice
+
+---8
+
+- Hosting and server setting [@letoinformatics](https://letoinformatics.com/)
+- Supplies of material and technical help [@termoclimaservice](https://termoclimaservice.net/)
  
- 
+
 # References 
 - [ESP32/ESP8266 Publish Data to Raspberry Pi LAMP Server](https://randomnerdtutorials.com/esp32-esp8266-raspberry-pi-lamp-server/)
 - [ESP8266 DS18B20 ](https://randomnerdtutorials.com/esp8266-ds18b20-temperature-sensor-web-server-with-arduino-ide/)
