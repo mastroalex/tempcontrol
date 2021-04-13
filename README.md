@@ -1265,6 +1265,8 @@ Add this snippet in the `loop()`section:
   }
 ```
 
+> Only `value1` and `value2` are used in this code. For `value3` see in the personalization section.
+
 You need to make some changes to make it work for you.
 
 Setting network credentials how indicated in webserver section.
@@ -1330,7 +1332,12 @@ You can also go to phpMyAdmin to manage the data stored in your Sensor table. Yo
 
 ### Personalize it
 
-#### Add new element
+#### Send data from another ESP8266
+
+
+#### Add new column in table
+
+#### Add new graph
 
 #### Graph 
 
@@ -1399,7 +1406,10 @@ It work also on mobile device.
 
 # Contributors 
 
+- @mastroalex
 - Graphic Design - @Alina Elena Mihai
+- Hosting and server setting @letoinformatics
+- Supplies of material and technical help @termoclimaservice
 
 # References 
 - [ESP32/ESP8266 Publish Data to Raspberry Pi LAMP Server](https://randomnerdtutorials.com/esp32-esp8266-raspberry-pi-lamp-server/)
