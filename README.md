@@ -26,7 +26,7 @@ The purpose of this project is to create a station for monitoring the environmen
     + [PHP Script HTTP POST – Insert Data in MySQL Database](#php-script-http-post---insert-data-in-mysql-database)
     + [PHP Script – Display Database Content](#php-script---display-database-content)
     + [Preparing Your ESP32 or ESP8266](#preparing-your-esp32-or-esp8266)
-  * [Private domanin server](#private-domanin-server)
+  * [Private domain server](#private-domain-server)
     + [Hosting Your PHP Application and MySQL Database](#hosting-your-php-application-and-mysql-database)
     + [Preparing Your ESP32 or ESP8266](#preparing-your-esp32-or-esp8266-1)
     + [Code complete](#code-complete)
@@ -529,6 +529,10 @@ This code will be integrated with that of the web server.
 
 **The following has been taken from [ESP32/ESP8266 Publish Data to Raspberry Pi LAMP Server](https://randomnerdtutorials.com/esp32-esp8266-raspberry-pi-lamp-server/) and not yet revised**
 
+<img src="https://rhea.co.in/wp-content/uploads/2019/11/LAMP-stack.jpg" alt="rasp_lamp" width="800">
+
+> **This section has not been detailed see [private domain server](#private-domain-server) for better content.**
+
 ### Preparing MySQL Database
 
 After installing a LAMP server and phpMyAdmin on Raspberry Pi, you can login into phpMyAdmin. After that, follow the next steps to create your database and SQL table.
@@ -850,10 +854,10 @@ For other information [randomnertutorials.com](https://randomnerdtutorials.com/e
 
 --- 
 
-## Private domanin server
+## Private domain server
 
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/lamp_raspberry.jpg" alt="system" width="1000"/>
 
-**The following has been taken from [Visualize Your Sensor Readings from Anywhere in the World](https://randomnerdtutorials.com/visualize-esp32-esp8266-sensor-readings-from-anywhere/) and not yet revised**
 
 ### Hosting Your PHP Application and MySQL Database 
 
