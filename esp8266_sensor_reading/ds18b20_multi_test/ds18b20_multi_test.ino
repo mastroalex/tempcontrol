@@ -13,7 +13,7 @@ DallasTemperature sensors(&oneWire);
 
 // Number of temperature devices found
 int numberOfDevices;
-
+float tempvec[2];
 // We'll use this variable to store a found device address
 DeviceAddress tempDeviceAddress;
 
@@ -47,30 +47,31 @@ void setup() {
     }
   }
 }
-//float DSTemp() {
-//  sensors.requestTemperatures();
-//  float temperatureC = sensors.getTempCByIndex(0);
-//  return temperatureC;
-//}
+
 void loop() {
   sensors.requestTemperatures(); // Send the command to get temperatures
-  
+
   // Loop through each device, print out temperature data
-  for(int i=0;i<numberOfDevices; i++){
+  for (int i = 0; i < numberOfDevices; i++) {
     // Search the wire for address
-    if(sensors.getAddress(tempDeviceAddress, i)){
+    if (sensors.getAddress(tempDeviceAddress, i)) {
       // Output the device ID
       Serial.print("Temperature for device: ");
-      Serial.println(i,DEC);
+      Serial.println(i, DEC);
       // Print the data
       float tempC = sensors.getTempC(tempDeviceAddress);
       Serial.print("Temp C: ");
       Serial.print(tempC);
       Serial.print(" Temp F: ");
       Serial.println(DallasTemperature::toFahrenheit(tempC)); // Converts tempC to Fahrenheit
+      tempvec[i] = tempC;
     }
+    Serial.print(tempvec[0]); 
+    Serial.print("; ");
+    Serial.println(tempvec[1]); 
   }
-  delay(5000);
+
+  delay(500);
 }
 //void loop() {
 //  sensors.requestTemperatures();
@@ -80,8 +81,8 @@ void loop() {
 //  delay(2500);
 //}
 void printAddress(DeviceAddress deviceAddress) {
-  for (uint8_t i = 0; i < 8; i++){
+  for (uint8_t i = 0; i < 8; i++) {
     if (deviceAddress[i] < 16) Serial.print("0");
-      Serial.print(deviceAddress[i], HEX);
+    Serial.print(deviceAddress[i], HEX);
   }
 }

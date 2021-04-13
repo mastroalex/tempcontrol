@@ -3,7 +3,7 @@
 
 The purpose of this project is to create a station for monitoring the environmental conditions for home. The device will be open source and based on Arduino and NodeMCU.
 
-
+ 
 ### Table of content
 - [Environmental conditions measurement unit](#environmental-conditions-measurement-unit)
     + [Table of content](#table-of-content)
@@ -1289,6 +1289,7 @@ You can also go to phpMyAdmin to manage the data stored in your Sensor table. Yo
 
 # References 
 - [ESP32/ESP8266 Publish Data to Raspberry Pi LAMP Server](https://randomnerdtutorials.com/esp32-esp8266-raspberry-pi-lamp-server/)
+- [ESP8266 DS18B20 ](https://randomnerdtutorials.com/esp8266-ds18b20-temperature-sensor-web-server-with-arduino-ide/)
 - [ALEXA ECHO comunica con ESP32 and ESP8266 utilizzando SINRIC](https://www.youtube.com/watch?app=desktop&v=nYen86CvUzg&t=871s)
 - [SinricPro (ESP8266 / ESP32 SDK)](https://github.com/sinricpro/esp8266-esp32-sdk)
 - [ESP32 DHT11/DHT22 Web Server](https://randomnerdtutorials.com/esp32-dht11-dht22-temperature-humidity-web-server-arduino-ide/)
