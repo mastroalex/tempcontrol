@@ -856,12 +856,12 @@ For other information [randomnertutorials.com](https://randomnerdtutorials.com/e
 
 ## Private domain server
 
+The goal of this section is to have your own domain name and hosting account that allows you to store sensor readings from the ESP32 or ESP8266. You can visualize the readings from anywhere in the world by accessing your own server domain. 
+
 <img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/lamp_raspberry.jpg" alt="system" width="1000"/>
 
 
 ### Hosting Your PHP Application and MySQL Database 
-
-The goal of this project is to have your own domain name and hosting account that allows you to store sensor readings from the ESP32 or ESP8266. You can visualize the readings from anywhere in the world by accessing your own server domain. 
 
 In this guide is used Siteground hosting.
 
