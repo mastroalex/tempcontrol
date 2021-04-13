@@ -26,7 +26,7 @@ The purpose of this project is to create a station for monitoring the environmen
     + [PHP Script HTTP POST – Insert Data in MySQL Database](#php-script-http-post---insert-data-in-mysql-database)
     + [PHP Script – Display Database Content](#php-script---display-database-content)
     + [Preparing Your ESP32 or ESP8266](#preparing-your-esp32-or-esp8266)
-  * [Private domanin](#private-domanin)
+  * [Private domanin server](#private-domanin-server)
     + [Hosting Your PHP Application and MySQL Database](#hosting-your-php-application-and-mysql-database)
     + [Preparing your MySQL Database](#preparing-your-mysql-database)
     + [Creating a SQL table](#creating-a-sql-table)
@@ -853,7 +853,7 @@ For other information [randomnertutorials.com](https://randomnerdtutorials.com/e
 
 --- 
 
-## Private domanin 
+## Private domanin server
 
 
 **The following has been taken from [Visualize Your Sensor Readings from Anywhere in the World](https://randomnerdtutorials.com/visualize-esp32-esp8266-sensor-readings-from-anywhere/) and not yet revised**
