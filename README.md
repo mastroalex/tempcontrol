@@ -1188,6 +1188,17 @@ $username = "example_esp_board";
 $password = "YOUR_USER_PASSWORD";
 ```
 
+For siteground user it is important to **disable dynamic cache** so add into `.htacces`the following snippet:
+
+```
+<IfModule mod_headers.c> 
+Header set Cache-Control "max-age=0,no-store"
+</IfModule>
+```
+
+The file is locatel in `/public_html` directory.
+if the file does not exist, create it.
+
 Try to access your domain name in the following URL path:
 
 ```
@@ -1196,7 +1207,7 @@ http://example.com/esp-chart.php
 
 That’s it! If you see three empty charts in your browser, it means that everything is ready. In the next section, you’ll learn how to publish your ESP32 or ESP8266 sensor readings.
 
-To build the charts, we’ll use the [Highcharts library](https://www.highcharts.com/docs/). We’ll create three charts: temperature, humidity and pressure over time. The charts display a maximum of 40 data points, and a new reading is added every 30 seconds, but you change these values in your code.
+To build the charts, we’ll use the [Highcharts library](https://www.highcharts.com/docs/). We’ll create three charts: temperature, humidity and pressure over time. The charts display a maximum of 400 data points, and a new reading is added every 5 minutes, but you change these values in your code.
 
 This is only an example code, the basis for making everything work. The code is completely modular and will be customized and expanded
 
