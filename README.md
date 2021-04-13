@@ -1940,6 +1940,9 @@ Put this snippet in place of the `<div>` of the charts and insert the graphs `<d
 # Other project
 
 - [TCS - Solar Heating Control Unit](https://github.com/mastroalex/TCS)
+- [Energy monitor](https://github.com/mastroalex/energy)
+- [Irrigation](https://github.com/mastroalex/irrigation)
+- [Healt monitor](https://github.com/mastroalex/healt)
 
 
 # Contributors 
