@@ -1647,9 +1647,8 @@ So create new table like [previous section](https://github.com/mastroalex/tempco
 ```sql
 CREATE TABLE Sensor2 (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    value1 VARCHAR(10),
-    value2 VARCHAR(10),
-    value3 VARCHAR(10),
+    value5 VARCHAR(10),
+    value6 VARCHAR(10),
     reading_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )
 ```
@@ -1657,8 +1656,8 @@ CREATE TABLE Sensor2 (
 Copy `post-data.php` into new file like `post-data1.php` and change table name.
 
 ```php
-$sql = "INSERT INTO Sensor2 (value1, value2, value3)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "')";
+$sql = "INSERT INTO Sensor2 (value5, value6)
+        VALUES ('" . $value1 . "', '" . $value2 . "')";
 ```
 Change also `serverName` in the ESP8266 sketch.
 ```c
@@ -1718,7 +1717,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT id, value1, value2, value3, reading_time FROM Sensor2 order by reading_time desc limit 40";
+$sql = "SELECT id, value5, value6, reading_time FROM Sensor2 order by reading_time desc limit 40";
 
 $result = $conn->query($sql);
 
@@ -1726,10 +1725,10 @@ while ($data = $result->fetch_assoc()){
     $sensor_data[] = $data;
 }
 
-$readings_time = array_column($sensor_data, 'reading_time');
+$readings_time2 = array_column($sensor_data, 'reading_time');
 
-$value6 = json_encode(array_reverse(array_column($sensor_data, 'value1')), JSON_NUMERIC_CHECK);
-$value5 = json_encode(array_reverse(array_column($sensor_data, 'value2')), JSON_NUMERIC_CHECK);
+$value6 = json_encode(array_reverse(array_column($sensor_data, 'value6')), JSON_NUMERIC_CHECK);
+$value5 = json_encode(array_reverse(array_column($sensor_data, 'value5')), JSON_NUMERIC_CHECK);
 
 $reading_time2 = json_encode(array_reverse($readings_time), JSON_NUMERIC_CHECK);
 
