@@ -28,10 +28,6 @@ The purpose of this project is to create a station for monitoring the environmen
     + [Preparing Your ESP32 or ESP8266](#preparing-your-esp32-or-esp8266)
   * [Private domanin server](#private-domanin-server)
     + [Hosting Your PHP Application and MySQL Database](#hosting-your-php-application-and-mysql-database)
-    + [Preparing your MySQL Database](#preparing-your-mysql-database)
-    + [Creating a SQL table](#creating-a-sql-table)
-    + [PHP Script HTTP POST – Insert Data in MySQL Database](#php-script-http-post---insert-data-in-mysql-database-1)
-    + [PHP Script – Visualize Database Content in a Chart](#php-script---visualize-database-content-in-a-chart)
     + [Preparing Your ESP32 or ESP8266](#preparing-your-esp32-or-esp8266-1)
     + [Code complete](#code-complete)
     + [Personalize it](#personalize-it)
@@ -39,6 +35,7 @@ The purpose of this project is to create a station for monitoring the environmen
 - [Other project](#other-project)
 - [Contributors](#contributors)
 - [References](#references)
+
 
 
 ### Shopping bag
@@ -864,7 +861,7 @@ The goal of this project is to have your own domain name and hosting account tha
 
 In this guide is used Siteground hosting.
 
-### Preparing your MySQL Database
+#### Preparing your MySQL Database
 
 After signing up for a hosting account and setting up a domain name, you can login to your cPanel or similar dashboard. After that, follow the next steps to create your database, username, password and SQL table.
 
@@ -889,7 +886,7 @@ That’s it! Your new database and user were created successfully. Now, save all
 - **Username**: `example_esp_board`
 - **Password**: `your password`
 
-### Creating a SQL table
+###à Creating a SQL table
 
 After creating your database and user, go back to cPanel dashboard and search for “phpMyAdmin”. 
 
@@ -911,7 +908,7 @@ CREATE TABLE Sensor (
 
 After that, you should see your newly created table called `Sensor` in the `example_esp_data` database as shown in the figure below:
 
-### PHP Script HTTP POST – Insert Data in MySQL Database
+#### PHP Script HTTP POST – Insert Data in MySQL Database
 
 In this section, we’re going to create a PHP script that receives incoming requests from the ESP32 or ESP8266 and inserts the data into a MySQL database.
 
@@ -1008,7 +1005,7 @@ After adding the database name, username and password, save the file and continu
 http://example.com/post-data.php
 ```
 
-### PHP Script – Visualize Database Content in a Chart
+#### PHP Script – Visualize Database Content in a Chart
 
 Create another PHP file in the `/public_html` directory that will plot the database content in a chart on a web page. Name your new file: `esp-chart.php`
 
