@@ -1215,7 +1215,13 @@ This is only an example code, the basis for making everything work. The code is 
 
 The same previous code is used with some additions:
 
-Inizialize new varables:
+Include new library:
+
+```c
+#include <ESP8266HTTPClient.h>;
+```
+
+Inizialize new variables:
 
 ```c
 // server mysql
