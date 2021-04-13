@@ -872,18 +872,24 @@ After signing up for a hosting account and setting up a domain name, you can log
 
 In my case, the database name is assigned by siteground. Save it.
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266sinric/sinric_dht_mobileapp.png" alt="sinric_app_dht" width="400">
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/database.png" alt="siteground_db" width="1000">
 
 
-Note: later you’ll have to use the database name with the prefix that your host gives you (my database prefix in the screenshot above is blurred). I’ll refer to it as `example_esp_data` from now on.
+Add an user `username` and set a `password`. You must save all those details, because you’ll need them later to establish a database connection with your PHP code.
 
-Type your Database `username` and set a `password`. You must save all those details, because you’ll need them later to establish a database connection with your PHP code.
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/user.png" alt="siteground_user" width="1000">
+
+Set the user to the database:
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/userselect.png" alt="userselect" width="1000">
+
+
 
 That’s it! Your new database and user were created successfully. Now, save all your details because you’ll need them later:
 
-- **Database name**: example_esp_data
-- **Username**: example_esp_board
-- **Password**: your password
+- **Database name**: `example_esp_data`
+- **Username**: `example_esp_board`
+- **Password**: `your password`
 
 ### Creating a SQL table
 
@@ -925,14 +931,8 @@ Edit the newly created file (post-data.php) and copy the following snippet:
 
 <?php
 /*
-  Rui Santos
-  Complete project details at https://RandomNerdTutorials.com
-  
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files.
-  
-  The above copyright notice and this permission notice shall be included in all
-  copies or substantial portions of the Software.
+  Thanks to Rui Santos
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files.The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
 $servername = "localhost";
@@ -945,7 +945,7 @@ $username = "REPLACE_WITH_YOUR_USERNAME";
 $password = "REPLACE_WITH_YOUR_PASSWORD";
 
 // Keep this API Key value to be compatible with the ESP32 code provided in the project page. If you change this value, the ESP32 sketch needs to match
-$api_key_value = "tPmAT5Ab3j7F9";
+$api_key_value = "tPmAT5Ab3j7F8";
 
 $api_key = $value1 = $value2 = $value3 = "";
 
@@ -1005,7 +1005,7 @@ $username = "example_esp_board";
 $password = "YOUR_USER_PASSWORD";
 ```
 
-After adding the database name, username and password, save the file and continue with this tutorial. If you try to access your domain name in the next URL path, you’ll see the message:
+After adding the database name, username and password, save the file and continue with this tutorial. If you try to access your domain name in the next URL path.
 ```
 http://example.com/post-data.php
 ```
@@ -1018,16 +1018,8 @@ Edit the newly created file (`esp-chart.php`) and copy the following code:
 
 ```php
 <!--
-  Rui Santos
-  Complete project details at https://RandomNerdTutorials.com
-  
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files.
-  
-  The above copyright notice and this permission notice shall be included in all
-  copies or substantial portions of the Software.
-
--->
+  Thanks to Rui Santos
+  -->
 <?php
 
 $servername = "localhost";
@@ -1098,7 +1090,7 @@ $conn->close();
     }
   </style>
   <body>
-    <h2>ESP Weather Station</h2>
+    <h2>TEMPCONTROL</h2>
     <div id="chart-temperature" class="container"></div>
     <div id="chart-humidity" class="container"></div>
     <div id="chart-pressure" class="container"></div>
@@ -1111,7 +1103,7 @@ var reading_time = <?php echo $reading_time; ?>;
 
 var chartT = new Highcharts.Chart({
   chart:{ renderTo : 'chart-temperature' },
-  title: { text: 'BME280 Temperature' },
+  title: { text: 'Temperature' },
   series: [{
     showInLegend: false,
     data: value1
@@ -1135,7 +1127,7 @@ var chartT = new Highcharts.Chart({
 
 var chartH = new Highcharts.Chart({
   chart:{ renderTo:'chart-humidity' },
-  title: { text: 'BME280 Humidity' },
+  title: { text: 'Humidity' },
   series: [{
     showInLegend: false,
     data: value2
@@ -1159,7 +1151,7 @@ var chartH = new Highcharts.Chart({
 
 var chartP = new Highcharts.Chart({
   chart:{ renderTo:'chart-pressure' },
-  title: { text: 'BME280 Pressure' },
+  title: { text: 'Pressure' },
   series: [{
     showInLegend: false,
     data: value3
@@ -1206,10 +1198,63 @@ That’s it! If you see three empty charts in your browser, it means that everyt
 
 To build the charts, we’ll use the [Highcharts library](https://www.highcharts.com/docs/). We’ll create three charts: temperature, humidity and pressure over time. The charts display a maximum of 40 data points, and a new reading is added every 30 seconds, but you change these values in your code.
 
+This is only an example code, the basis for making everything work. The code is completely modular and will be customized and expanded
+
 ### Preparing Your ESP32 or ESP8266
 
+The same previous code is used with some additions:
 
-After installing the necessary board add-ons, copy the code to your Arduino IDE, but don’t upload it yet. You need to make some changes to make it work for you.
+Inizialize new varables:
+
+```c
+// server mysql
+// REPLACE with your Domain name and URL path or IP address with path
+const char* serverName = "http://yourdomain.it/post-data.php";
+// Keep this API Key value to be compatible with the PHP code provided in the project page.
+// If you change the apiKeyValue value, the PHP file /post-data.php also needs to have the same key
+String apiKeyValue = "tPmAT5Ab3j7F8";
+//timer 
+unsigned long t2=0;
+unsigned long dt=0;
+unsigned long t3 = 300000;//update database every 5 minutes
+```
+
+Add this snippet in the `loop()`section:
+
+```c
+//Check WiFi connection status
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+
+    // Your Domain name with URL path or IP address with path
+    http.begin(serverName);
+
+    // Specify content-type header
+    http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+    dt=millis()-t2;
+    if (dt>= t3) {
+      // Prepare your HTTP POST request data
+      String httpRequestData = "api_key=" + apiKeyValue + "&value1=" + String(t)
+                               + "&value2=" + String(h)  + "";
+      Serial.print("httpRequestData: ");
+      Serial.println(httpRequestData);
+ 
+      if (httpResponseCode > 0) {
+        Serial.print("HTTP Response code: ");
+        Serial.println(httpResponseCode);
+      }
+      else {
+        Serial.print("Error code: ");
+        Serial.println(httpResponseCode);
+      }
+      t2=millis();
+    }
+    // Free resources
+    http.end();
+  }
+```
+
+You need to make some changes to make it work for you.
 
 Setting network credentials how indicated in webserver section.
 
@@ -1266,8 +1311,7 @@ http://example.com/esp-chart.php
 You should see the all the readings stored in your database. Refresh the web page to see the latest readings:
 
 
-<img src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/08/esp32-esp8266-publishing-readings-to-MySQL-database-open-visualize-plot-charts.png?quality=100&strip=all&ssl=1" alt="esp32" width="700"/>
-
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/graph.png" alt="graph" width="1000">
  
 You can also go to phpMyAdmin to manage the data stored in your Sensor table. You can delete it, edit, etc…
 
