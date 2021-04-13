@@ -870,7 +870,10 @@ In this guide is used Siteground hosting.
 
 After signing up for a hosting account and setting up a domain name, you can login to your cPanel or similar dashboard. After that, follow the next steps to create your database, username, password and SQL table.
 
-In my case, the database name is `esp_data`. Then, press the “Next Step” button:
+In my case, the database name is assigned by siteground. Save it.
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266sinric/sinric_dht_mobileapp.png" alt="sinric_app_dht" width="400">
+
 
 Note: later you’ll have to use the database name with the prefix that your host gives you (my database prefix in the screenshot above is blurred). I’ll refer to it as `example_esp_data` from now on.
 
