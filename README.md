@@ -1317,6 +1317,62 @@ You can also go to phpMyAdmin to manage the data stored in your Sensor table. Yo
 
 > Thanks to [randomnerdtutorials.com](https://randomnerdtutorials.com/visualize-esp32-esp8266-sensor-readings-from-anywhere/)
 
+### Personalize it
+
+#### Add new element
+
+#### Graph 
+
+The graph is based on [Highchart software](highcharts.com) interactive JavasSript chart.
+
+This chart is fully personalizable.
+
+To edit chart properties you have to change Javascript code section. THis section is the snippet like:
+
+```js
+var chartH = new Highcharts.Chart({
+  chart:{ renderTo:'chart-humidity'
+          },
+  title: { text: 'Umidità camera Ale' },
+  series: [{
+    showInLegend: false,
+    data: value2
+  }],
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: true }
+    }
+  },
+  xAxis: {
+    type: 'datetime',
+    //dateTimeLabelFormats: { second: '%H:%M:%S' },
+    categories: reading_time
+  },
+  yAxis: {
+    title: { text: 'Humidity (%)' }
+  },
+  credits: { enabled: false }
+});
+```
+
+##### Make graph zoomable and scrollable
+
+Ad in the php file `esp-chart.php` the following snippet in the `chart:{ }` section:
+```js
+chart:{ renderTo : 'chart-temperature',
+        zoomType: 'x',
+        panning: true,
+        panKey: 'shift' },
+```
+
+This allow to select area and zoom in. It is also possible to pan chart by continue pressing `shift` and scrolling with mouse.
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/zoom1.png" alt="zoom" width="1000">
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/zoom2.png" alt="zoom" width="1000">
+
+It work also on mobile device.
+
 --- 
 
 
