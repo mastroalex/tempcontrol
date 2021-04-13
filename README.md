@@ -1935,12 +1935,11 @@ Put this snippet in place of the `<div>` of the charts and insert the graphs `<d
 - @mastroalex
 - Graphic Design - @Alina Elena Mihai
 
----8
+---
 
 - Hosting and server setting [@letoinformatics](https://letoinformatics.com/)
 - Supplies of material and technical help [@termoclimaservice](https://termoclimaservice.net/)
  
-
 # References 
 - [ESP32/ESP8266 Publish Data to Raspberry Pi LAMP Server](https://randomnerdtutorials.com/esp32-esp8266-raspberry-pi-lamp-server/)
 - [ESP8266 DS18B20 ](https://randomnerdtutorials.com/esp8266-ds18b20-temperature-sensor-web-server-with-arduino-ide/)
