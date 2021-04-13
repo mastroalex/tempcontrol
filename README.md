@@ -1382,7 +1382,7 @@ Insert column detail:
 - Length/values: `10`
 - Collation: `utf8mb4_general_ci	`
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/phpmyadmin1.png" alt="php" width="1000">
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/phpmyadmin2.png" alt="php" width="1000">
 
 #### Modify post-data.php
 
