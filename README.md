@@ -1425,7 +1425,7 @@ Do it for all the extra values.
 
 Before continue and add chart verify in phpMyAdmin that the table is correctly upgrade with new values.
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/phpmyadmin1.png" alt="php" width="1000">
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/phpmyadmin3.png" alt="php" width="1000">
 
 > In this screen there are no values for `value1` and `value2` because they are set to update every 5 minutes instead of `value3` and `value4` which update every 3 seconds. It is for testing purposes only.
 
