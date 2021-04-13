@@ -1878,6 +1878,18 @@ This allow to select area and zoom in. It is also possible to pan chart by conti
 
 It work also on mobile device.
 
+##### Remove datalabel
+
+If there is a lot of data it may be useful to remove the labels
+
+Set `false` in:
+```js
+plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: false }
+    }
+```
+
 #### Privacy 
 
 There are several ways to secure this page. Most are safer but more complex than the one presented.
