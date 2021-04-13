@@ -6,7 +6,6 @@ The purpose of this project is to create a station for monitoring the environmen
  
 ### Table of content
 - [Environmental conditions measurement unit](#environmental-conditions-measurement-unit)
-    + [Table of content](#table-of-content)
     + [Shopping bag](#shopping-bag)
 - [Why](#why)
   * [Temperature and humidity](#temperature-and-humidity)
@@ -22,9 +21,6 @@ The purpose of this project is to create a station for monitoring the environmen
   * [ESP 32 web server and sensors reading](#esp-32-web-server-and-sensors-reading)
   * [Alexa integrations](#alexa-integrations)
     + [Sinric Pro Temperature Sensor](#sinric-pro-temperature-sensor)
-      - [ESP8266](#esp8266)
-      - [Alexa](#alexa)
-      - [App](#app)
   * [Raspberry Pi LAMP server](#raspberry-pi-lamp-server)
     + [Preparing MySQL Database](#preparing-mysql-database)
     + [PHP Script HTTP POST – Insert Data in MySQL Database](#php-script-http-post---insert-data-in-mysql-database)
@@ -38,10 +34,12 @@ The purpose of this project is to create a station for monitoring the environmen
     + [PHP Script – Visualize Database Content in a Chart](#php-script---visualize-database-content-in-a-chart)
     + [Preparing Your ESP32 or ESP8266](#preparing-your-esp32-or-esp8266-1)
     + [Code complete](#code-complete)
+    + [Personalize it](#personalize-it)
 - [Future implementations](#future-implementations)
 - [Other project](#other-project)
 - [Contributors](#contributors)
 - [References](#references)
+
 
 ### Shopping bag
 * DHT11 / DHT22 / DHT12
@@ -1878,6 +1876,45 @@ This allow to select area and zoom in. It is also possible to pan chart by conti
 <img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/zoom2.png" alt="zoom" width="1000">
 
 It work also on mobile device.
+
+#### Privacy 
+
+There are several ways to secure this page. Most are safer but more complex than the one presented.
+A simple method is to add the following code and add the part of the code related to the charts inside it.
+
+```html
+<?php
+// -------------------------
+$password = '123456789';
+// -------------------------
+
+$pwd = isset($_GET['pwd']) ? $_GET['pwd'] : false;
+if (!$pwd || $pwd != $password) {
+  ?>
+<form method="get" action="<?php echo $_SERVER['PHPSELF']; ?>">
+<table border="0" cellspacing="0" cellpadding="10">
+<?php if ($pwd !== false): ?><tr class="errore"><td colspan="3">La password inserita non è corretta!</td></tr><?php endif; ?>
+<tr>
+  <td>Password</td>
+  <td><input type="password" name="pwd" style="width: 180px;"/></td>
+  <td><input type="submit" value="Entra"/></td>
+</tr>
+</table>
+</form>  
+  <?php  
+}else{
+  ?>
+...
+... div_section_for_charts... 
+...
+  <?php  
+}
+?>
+```
+
+Insert your password in `YOURPASSWORD`.
+
+Put this snippet in place of the `<div>` of the charts and insert the graphs `<div>` in place of the `div_section_for_charts... `.
 
 --- 
 
