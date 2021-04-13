@@ -1633,6 +1633,105 @@ var chartT = new Highcharts.Chart({
 </html>
 
 ```
+#### Optimize it 
+
+To avoid discrepancies between data and time interval i suggest to create different table for each esp8266.
+
+So create new table like [previous section](https://github.com/mastroalex/tempcontrol#creating-a-sql-table) with different name.
+```sql
+CREATE TABLE Sensor2 (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    value1 VARCHAR(10),
+    value2 VARCHAR(10),
+    value3 VARCHAR(10),
+    reading_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+```
+
+Copy `post-data.php` into new file like `post-data1.php` and change table name.
+
+```php
+$sql = "INSERT INTO Sensor2 (value1, value2, value3)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "')";
+```
+Change also `serverName` in the ESP8266 sketch.
+```c
+const char* serverName = "http://yourdomain.it/post-data1.php";
+```
+
+Now is possible to control that the table Sensor2 is effectively update with new data.
+If everything is alright open `esp-chart.php` and duplicate the connection to the sql server and change the second table name in `Sensor2`. 
+
+So the code look like this:
+
+```php
+<?php
+
+$servername = "localhost";
+
+// REPLACE with your Database name
+$dbname = "DBNAME";
+// REPLACE with Database user
+$username = "USERNAME";
+// REPLACE with Database user password
+$password = "PASSWORD";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "SELECT id, value1, value2, value3, value4, reading_time FROM Sensor order by reading_time desc limit 40";
+
+$result = $conn->query($sql);
+
+while ($data = $result->fetch_assoc()){
+    $sensor_data[] = $data;
+}
+
+$readings_time = array_column($sensor_data, 'reading_time');
+
+$value1 = json_encode(array_reverse(array_column($sensor_data, 'value1')), JSON_NUMERIC_CHECK);
+$value2 = json_encode(array_reverse(array_column($sensor_data, 'value2')), JSON_NUMERIC_CHECK);
+$value3 = json_encode(array_reverse(array_column($sensor_data, 'value3')), JSON_NUMERIC_CHECK);
+$value4 = json_encode(array_reverse(array_column($sensor_data, 'value4')), JSON_NUMERIC_CHECK);
+
+$reading_time = json_encode(array_reverse($readings_time), JSON_NUMERIC_CHECK);
+
+$result->free();
+$conn->close();
+
+// second table Sensor2
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "SELECT id, value1, value2, value3, reading_time FROM Sensor2 order by reading_time desc limit 40";
+
+$result = $conn->query($sql);
+
+while ($data = $result->fetch_assoc()){
+    $sensor_data[] = $data;
+}
+
+$readings_time = array_column($sensor_data, 'reading_time');
+
+$value6 = json_encode(array_reverse(array_column($sensor_data, 'value1')), JSON_NUMERIC_CHECK);
+$value5 = json_encode(array_reverse(array_column($sensor_data, 'value2')), JSON_NUMERIC_CHECK);
+
+$reading_time2 = json_encode(array_reverse($readings_time), JSON_NUMERIC_CHECK);
+
+$result->free();
+$conn->close();
+
+?>
+```
 
 #### Graph 
 
@@ -1640,7 +1739,9 @@ The graph is based on [Highchart software](highcharts.com) interactive JavasSrip
 
 This chart is fully personalizable.
 
-To edit chart properties you have to change Javascript code section. THis section is the snippet like:
+To edit chart properties you have to change Javascript code section. 
+
+This section is the snippet like:
 
 ```js
 var chartH = new Highcharts.Chart({
