@@ -1410,7 +1410,8 @@ It work also on mobile device.
 - Graphic Design - @Alina Elena Mihai
 - Hosting and server setting @letoinformatics
 - Supplies of material and technical help @termoclimaservice
-
+ 
+ 
 # References 
 - [ESP32/ESP8266 Publish Data to Raspberry Pi LAMP Server](https://randomnerdtutorials.com/esp32-esp8266-raspberry-pi-lamp-server/)
 - [ESP8266 DS18B20 ](https://randomnerdtutorials.com/esp8266-ds18b20-temperature-sensor-web-server-with-arduino-ide/)
