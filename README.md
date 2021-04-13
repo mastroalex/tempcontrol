@@ -858,7 +858,7 @@ For other information [randomnertutorials.com](https://randomnerdtutorials.com/e
 
 The goal of this section is to have your own domain name and hosting account that allows you to store sensor readings from the ESP32 or ESP8266. You can visualize the readings from anywhere in the world by accessing your own server domain. 
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/lamp_raspberry.jpg" alt="system" width="1000"/>
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/web_server.jpg" alt="system" width="1000"/>
 
 
 ### Hosting Your PHP Application and MySQL Database 
@@ -890,7 +890,7 @@ That’s it! Your new database and user were created successfully. Now, save all
 - **Username**: `example_esp_board`
 - **Password**: `your password`
 
-###à Creating a SQL table
+#### Creating a SQL table
 
 After creating your database and user, go back to cPanel dashboard and search for “phpMyAdmin”. 
 
