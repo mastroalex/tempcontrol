@@ -1950,11 +1950,26 @@ Now download latest firmare `.bin` and load it by press Tasmotize!
 
 <img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmotize.png" alt="tasmotize" width="400">
 
-Now connect directly into devices Access Point and configure wireless settings. 
-After correctly connections to internet access from browser to devices local ip.
-Set the `Template` with pin for `user` use and set the `Module` by connecting pin with numeric list. This numeric index rapresent the smart output.
+Now connect directly to the devices access point and configure wireless settings. 
+After successful Internet connections, access the local IP of the devices from the browser.
+Set the `Template` with pin for `user` use and set the `Module` by connecting pin with numeric index. This numeric index rapresent the smart output.
 
 <img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota1.png" alt="tasmota" width="250"> <img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota2.png" alt="tasmota" width="250">
+
+It is necessary to set the output as relay if you want to use the output as a switch or you can set it as a button or with many other options.
+
+Now it is possibile to controll the output from web server and connect it with Alexa by emulating Philips Hue Sistem (ad new devices, select `Philips Hue Bridge V1`). it is also possibile to set timer or clever rules. 
+
+The web server:
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota.png" alt="tasmota" width="250">
+
+For other info [tasmota.com](https://tasmota.github.io/docs/).
+
+For schematic:
+
+
+
 
 # Future implementations
 
