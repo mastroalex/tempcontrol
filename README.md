@@ -1932,8 +1932,11 @@ Put this snippet in place of the `<div>` of the charts and insert the graphs `<d
 --- 
 
 
+### Tasmota smart control
 
+It is worth mentioning the possibility of using the tasmota firmware to transform the esp 8266 into an intelligent actuator. With this opnesource firmware we can easily control and update the devices locally. We can also use timers and rules to automate everything.
 
+In this case we use it to add 6 home automation outputs to control 6 relays at 220 V. we use a multiple relay board with 5V power supply and 3.3V-5V logic converter
 
 # Future implementations
 
