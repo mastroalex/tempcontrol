@@ -31,7 +31,7 @@ The purpose of this project is to create a station for monitoring the environmen
     + [Preparing Your ESP32 or ESP8266](#preparing-your-esp32-or-esp8266-1)
     + [Code complete](#code-complete)
     + [Personalize it](#personalize-it)
-  * [Tasmota Smart Control](#tasmota_smart_control)
+  * [Tasmota Smart Control](#tasmota-smart-control)
 - [Future implementations](#future-implementations)
 - [Other project](#other-project)
 - [Contributors](#contributors)
@@ -1964,6 +1964,11 @@ Now it is possibile to controll the output from web server and connect it with A
 The web server:
 
 <img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota.png" alt="tasmota" width="250">
+
+It is also important to set the right time zone so open the console from web server and:
+- `NtpServer`, to verify that the device can read time 
+- `TimeSTD 0, 0, 10, 1, 3, 60` and `TimeDST 0, 0, 3, 1, 2, 120` to set winter (STD) and summer (DST) time
+- `Timezone 99`, to disable the deviation from UTC leaving valid the commands for STD and DST time 
 
 For other info [tasmota.com](https://tasmota.github.io/docs/).
 
