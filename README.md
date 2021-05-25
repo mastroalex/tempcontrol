@@ -1954,7 +1954,7 @@ Now connect directly into devices Access Point and configure wireless settings.
 After correctly connections to internet access from browser to devices local ip.
 Set the `Template` with pin for `user` use and set the `Module` by connecting pin with numeric list. This numeric index rapresent the smart output.
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota1.png" alt="tasmota" width="400"> <img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota2.png" alt="tasmota" width="400">
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota1.png" alt="tasmota" width="250"> <img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota2.png" alt="tasmota" width="250">
 
 # Future implementations
 
