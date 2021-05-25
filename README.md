@@ -1936,7 +1936,25 @@ Put this snippet in place of the `<div>` of the charts and insert the graphs `<d
 
 It is worth mentioning the possibility of using the tasmota firmware to transform the esp 8266 into an intelligent actuator. With this opnesource firmware we can easily control and update the devices locally. We can also use timers and rules to automate everything.
 
-In this case we use it to add 6 home automation outputs to control 6 relays at 220 V. we use a multiple relay board with 5V power supply and 3.3V-5V logic converter
+In this case we use it to add 6 home automation outputs to control 6 relays at 220 V. we use a multiple relay board with 5V power supply and 3.3V-5V logic converter.
+
+These smart outputs integrate easily with alexa to other alexa home automation systems.
+
+The best way to setup tasmota firmware is to download [tasmotizer](https://github.com/tasmota/tasmotizer). 
+Install from PyPI using pip:
+- Upgrade pip and wheel packages: `pip3 install --upgrade pip wheel`
+- Install tasmotizer: `pip3 install tasmotizer`
+- Then simply run `tasmotizer.py` from the shell/command line
+
+Now download latest firmare `.bin` and load it by press Tasmotize!
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmotize.png" alt="tasmotize" width="400">
+
+Now connect directly into devices Access Point and configure wireless settings. 
+After correctly connections to internet access from browser to devices local ip.
+Set the `Template` with pin for `user` use and set the `Module` by connecting pin with numeric list. This numeric index rapresent the smart output.
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota1.png" alt="tasmota" width="400"> <img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota2.png" alt="tasmota" width="400">
 
 # Future implementations
 
