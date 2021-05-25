@@ -1972,7 +1972,7 @@ It is also important to set the right time zone so open the console from web ser
 
 For other info [tasmota.com](https://tasmota.github.io/docs/).
 
-For schematic:
+An example for schematic:
 
 <img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota_bb.png" alt="tasmota" width="1000">
 
