@@ -31,6 +31,7 @@ The purpose of this project is to create a station for monitoring the environmen
     + [Preparing Your ESP32 or ESP8266](#preparing-your-esp32-or-esp8266-1)
     + [Code complete](#code-complete)
     + [Personalize it](#personalize-it)
+  * [Tasmota Smart Control](#tasmota_smart_control)
 - [Future implementations](#future-implementations)
 - [Other project](#other-project)
 - [Contributors](#contributors)
@@ -1932,7 +1933,7 @@ Put this snippet in place of the `<div>` of the charts and insert the graphs `<d
 --- 
 
 
-### Tasmota smart control
+## Tasmota smart control
 
 It is worth mentioning the possibility of using the tasmota firmware to transform the esp 8266 into an intelligent actuator. With this opnesource firmware we can easily control and update the devices locally. We can also use timers and rules to automate everything.
 
