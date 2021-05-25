@@ -1974,6 +1974,7 @@ For other info [tasmota.com](https://tasmota.github.io/docs/).
 
 For schematic:
 
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota_bb.png" alt="tasmota" width="1000">
 
 
 
