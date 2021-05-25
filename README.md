@@ -1983,10 +1983,17 @@ It is useful to use relay module:
 This board is very convenient as in addition to the relay it contains a status led, the switching transistor and the freewheeling diode.
 Power LED is also a SMD type and it shows the status of power source connected with the 5V single channel relay module. A freewheeling diode is connected across the coil to avoid the effect of back EMF. It is also known as a flyback diode. The coil used in the relay is an inductive type. When the current passes through an inductive load, it produces an back EMF voltage. This back EMF may damage the circuit. Therefore, a freewheeling diode is used to avoid this effect.  
 
-ut the maximum current sourcing capability of GPIO pins is generally less than 20mA. Hence, a switching transistor is used in this relay module to amplify current to the level of the minimum current requirement of the relay coil. By using a switching transistor, we can control the relay from the GPIO pin of a microcontroller.
+The maximum current sourcing capability of GPIO pins is generally less than 20mA. Hence, a switching transistor is used in this relay module to amplify current to the level of the minimum current requirement of the relay coil. By using a switching transistor, we can control the relay from the GPIO pin of a microcontroller.
 
 <img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/rel.png" alt="relay" width="400">
 
+___
+
+it is also very interesting to watch how these devices connect to the local network through a sunburst graph. these devices integrate easily with all home automation available on the market and allow their control from a single platform, in this case via the Alexa system.
+
+The map was obtained via the PRTG network monitor.
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/map.png" alt="map" width="1000">
 
 
 # Future implementations
