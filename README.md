@@ -1976,6 +1976,12 @@ An example for schematic:
 
 <img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota_bb.png" alt="tasmota" width="1000">
 
+It is useful to use relay module:
+
+<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/relay_module.png" alt="relay" width="400">
+
+
+
 
 
 # Future implementations
