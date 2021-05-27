@@ -2000,7 +2000,7 @@ For example:
 <img src="https://github.com/mastroalex/tempcontrol/blob/main/img/proto1.png" alt="protype" width="1000">
 
 
-> Real application - Prototype no. 2 Tasmota and board equipped with DHT11 (Sinric + Home Automation)
+> Real application - Prototype no. 2 - Tasmota and board equipped with DHT11 (Sinric + Home Automation)
 
 # Future implementations
 
