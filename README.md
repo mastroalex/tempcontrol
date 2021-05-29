@@ -390,6 +390,12 @@ float temperatureC = sensors.getTempCByIndex(0);
 
 > **For other info** [DS18B20 Reading Exampe](https://github.com/mastroalex/tempcontrol/tree/main/esp8266_sensor_reading/ds18b20_test)
 
+<img src="img/proto2.png" alt="prototype" width="600">
+
+
+> Real application - Prototype no. 6 - Temperature and humidity sensor used in a domestic environment by placing inside an electrical junction box, leaving the sensor exposed to ambient air.
+
+
 ---
 
 ##  ESP 32 web server and sensors reading
@@ -2003,6 +2009,27 @@ For example:
 > Real application - Prototype no. 2 - Tasmota and board equipped with DHT11 (Sinric + Home Automation) - In this example only 3 of the 6 relays provided are used. The circuit includes a 5V power supply, level converter, relays and equipped NodeMCU.
 
 # Future implementations
+
+It is obvious the possibility of optimizing everything by transferring it to a PCB circuit, eliminating all that is useless and using only the devices necessary for operation. This certainly implies an increase in production costs but would allow to reduce the dimensions by a lot. 
+It is clear that a larger scale production must first be evaluated and certainly not for the test phase. 
+___
+
+An interesting real application of what has been studied in this project is the [TCS - Solar Heating Control Unit](https://github.com/mastroalex/TCS) developed for a company active in the field of air conditioning and specialized in heating systems.
+___
+
+The DHT11 will be replaced by a DHT22, much more precise.
+
+| | DHT11 | DHT22 |
+| --- | --- | --- | 
+| Humidity range| 20-90% RH | 0-100% RH |
+| Humidity accuracy| ±5% RH	 | ±2% RH | 
+| Temperature range| 0-50 °C | -40-80 °C | 
+| Temperature accuracy| ±2% °C	 | ±0.5% °C | 
+| Reading time| 6-10 sec	 | 2 sec | 
+
+___
+
+
 
 # Other project
 
