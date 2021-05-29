@@ -121,13 +121,13 @@ The third phase consists to allowing alexa to read temperature with [Sinric](htt
 
 **Sinric permit a fists remote reading and logging for sensors data but only for temperature, humidity, air quality and energy consumption.**
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266sinric/sinric_diagram.png" alt="sinriclogdiagram" width="1000"/>
+<img src="esp8266sinric/sinric_diagram.png" alt="sinriclogdiagram" width="1000"/>
 
 The most important step is to create a LAMP web server on Raspberry Pi and to use it to publish data. This also allows us to integrate several EPS32s (e.g. for different rooms) into a single web server.
 
 In the following image the block diagram for final configurations:
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/lamp_raspberry.jpg" alt="system" width="1000"/>
+<img src="diagram/lamp_raspberry.jpg" alt="system" width="1000"/>
 
 
 To avoid overloading the LAN network, a radio communication system between raspberry and ESP32 could be developed. Or a radio link could be created between two ESP32s (or any other board similar to Arduino).
@@ -138,11 +138,11 @@ A last possibility is to open the firewall ports and allow access to the webserv
 
 Another options is to have a domain name and hosting account that allows to store sensor readings from the ESP32 or ESP8266. It's possible to visualize the readings from anywhere in the world by accessing your own server domain.
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/web_server.jpg" alt="system" width="1000"/>
+<img src="diagram/web_server.jpg" alt="system" width="1000"/>
 
 ##  ESP 8622 web server and sensors reading
 
->  **For general sensor reading search in** [example folder](https://github.com/mastroalex/tempcontrol/blob/main/esp8266_sensor_reading/README.md) 
+>  **For general sensor reading search in** [example folder](esp8266_sensor_reading/README.md) 
 
 In this case a wemos D32 is used. 
 To use it with Arduino IDE instal ESP8266 Library and select NodeMCU 1 (ESP-12E) board. It is also important to install CH340G driver.
@@ -154,7 +154,7 @@ Use this link [esp8266 package](http://arduino.esp8266.com/stable/package_esp826
 
 **Circuit diagram**
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266_sensor_reading/sensor_esp8266_bb.png" alt="nodemcu12E" width="800"/>
+<img src="esp8266_sensor_reading/sensor_esp8266_bb.png" alt="nodemcu12E" width="800"/>
 
 ---
 
@@ -188,7 +188,7 @@ This is an asynchronous web server that update data automatically without need t
 **Complete description** in: [ESP8266 Web Server Extra](https://github.com/mastroalex/tempcontrol/tree/main/esp8266webserveinfo)
 
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266webserveinfo/webserver_example.png" alt="system" width="300"/>
+<img src="esp8266webserveinfo/webserver_example.png" alt="system" width="300"/>
 
 > DS18B20 hand held to see temperature difference
 
@@ -258,7 +258,7 @@ if (this.readyState == 4 && this.status == 200) {
   document.getElementById("temperature").innerHTML = this.responseText;
 }
 ```
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266webserveinfo/webserver.png" alt="system" width="700"/>
+<img src="esp8266webserveinfo/webserver.png" alt="system" width="700"/>
 
 Another important function is `processor()` function, that will replace the placeholders in our HTML text with the actual temperature and humidity values.
 ```c
@@ -508,13 +508,13 @@ Call in `loop()` the function:
 
 It's possibile to add Sinric Pro skills in Alexa app and login with Sinric credential to add device.
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266sinric/alexa_dht_mobileapp.png" alt="alexa_app_dht" width="400">
+<img src="esp8266sinric/alexa_dht_mobileapp.png" alt="alexa_app_dht" width="400">
 
 #### App 
 
 It's possibile to download the Sinric Pro App or to login into SinricPro website to visualize sensor data log for different time period. 
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/esp8266sinric/sinric_dht_mobileapp.png" alt="sinric_app_dht" width="400">
+<img src="esp8266sinric/sinric_dht_mobileapp.png" alt="sinric_app_dht" width="400">
 
 
 
@@ -859,7 +859,7 @@ For other information [randomnertutorials.com](https://randomnerdtutorials.com/e
 
 The goal of this section is to have your own domain name and hosting account that allows you to store sensor readings from the ESP32 or ESP8266. You can visualize the readings from anywhere in the world by accessing your own server domain. 
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/web_server.jpg" alt="system" width="1000"/>
+<img src="diagram/web_server.jpg" alt="system" width="1000"/>
 
 
 ### Hosting Your PHP Application and MySQL Database 
@@ -872,16 +872,16 @@ After signing up for a hosting account and setting up a domain name, you can log
 
 In my case, the database name is assigned by siteground. Save it.
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/database.png" alt="siteground_db" width="1000">
+<img src="privatedomain/database.png" alt="siteground_db" width="1000">
 
 
 Add an user `username` and set a `password`. You must save all those details, because you’ll need them later to establish a database connection with your PHP code.
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/user.png" alt="siteground_user" width="1000">
+<img src="privatedomain/user.png" alt="siteground_user" width="1000">
 
 Set the user to the database:
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/userselect.png" alt="userselect" width="1000">
+<img src="privatedomain/userselect.png" alt="userselect" width="1000">
 
 
 
@@ -1330,7 +1330,7 @@ http://example.com/esp-chart.php
 You should see the all the readings stored in your database. Refresh the web page to see the latest readings:
 
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/graph.png" alt="graph" width="1000">
+<img src="privatedomain/graph.png" alt="graph" width="1000">
  
 You can also go to phpMyAdmin to manage the data stored in your Sensor table. You can delete it, edit, etc…
 
@@ -1373,7 +1373,7 @@ To add new column login in phpMyAdmin, go to the left sidebar and click the name
 
 Click on `Structure`and there is `aggiungi # campo`.
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/phpmyadmin1.png" alt="php" width="1000">
+<img src="privatedomain/phpmyadmin1.png" alt="php" width="1000">
 
 Enter the number of columns and select location. Than click go.
 
@@ -1383,7 +1383,7 @@ Insert column detail:
 - Length/values: `10`
 - Collation: `utf8mb4_general_ci	`
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/phpmyadmin2.png" alt="php" width="1000">
+<img src="privatedomain/phpmyadmin2.png" alt="php" width="1000">
 
 #### Modify post-data.php
 
@@ -1426,7 +1426,7 @@ Do it for all the extra values.
 
 Before continue and add chart verify in phpMyAdmin that the table is correctly upgrade with new values.
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/phpmyadmin3.png" alt="php" width="1000">
+<img src="privatedomain/phpmyadmin3.png" alt="php" width="1000">
 
 > In this screen there are no values for `value1` and `value2` because they are set to update every 5 minutes instead of `value3` and `value4` which update every 3 seconds. It is for testing purposes only.
 
@@ -1446,7 +1446,7 @@ $sql = "SELECT id, value1, value2, value3, value4, reading_time FROM Sensor orde
 ```
 Set a low number and increase progressively(otherwise check how many values there are from the table).
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/finalchart.png" alt="php" width="1000">
+<img src="privatedomain/finalchart.png" alt="php" width="1000">
 
 So the code look like this:
 ```php
@@ -1823,7 +1823,7 @@ And add link in the `<body>`section:
 ```
 Look like this and it is fully personalizable.
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/finalchart2.png" alt="chart" width="1000">
+<img src="privatedomain/finalchart2.png" alt="chart" width="1000">
 
 #### Graph 
 
@@ -1873,9 +1873,9 @@ chart:{ renderTo : 'chart-temperature',
 
 This allow to select area and zoom in. It is also possible to pan chart by continue pressing `shift` and scrolling with mouse.
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/zoom1.png" alt="zoom" width="1000">
+<img src="privatedomain/zoom1.png" alt="zoom" width="1000">
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/privatedomain/zoom2.png" alt="zoom" width="1000">
+<img src="privatedomain/zoom2.png" alt="zoom" width="1000">
 
 It work also on mobile device.
 
@@ -1949,13 +1949,13 @@ Install from PyPI using pip:
 
 Now download latest firmare `.bin` and load it by press Tasmotize!
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmotize.png" alt="tasmotize" width="400">
+<img src="diagram/tasmotize.png" alt="tasmotize" width="400">
 
 Now connect directly to the devices access point and configure wireless settings. 
 After successful Internet connections, access the local IP of the devices from the browser.
 Set the `Template` with pin for `user` use and set the `Module` by connecting pin with numeric index. This numeric index rapresent the smart output.
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota1.png" alt="tasmota" width="250"> <img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota2.png" alt="tasmota" width="250">
+<img src="diagram/tasmota1.png" alt="tasmota" width="250"> <img src="diagram/tasmota2.png" alt="tasmota" width="250">
 
 It is necessary to set the output as relay if you want to use the output as a switch or you can set it as a button or with many other options.
 
@@ -1963,7 +1963,7 @@ Now it is possibile to controll the output from web server and connect it with A
 
 The web server:
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota.png" alt="tasmota" width="250">
+<img src="diagram/tasmota.png" alt="tasmota" width="250">
 
 It is also important to set the right time zone so open the console from web server and:
 - `NtpServer`, to verify that the device can read time 
@@ -1974,18 +1974,18 @@ For other info [tasmota.com](https://tasmota.github.io/docs/).
 
 An example for schematic:
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/tasmota_bb.png" alt="tasmota" width="1000">
+<img src="diagram/tasmota_bb.png" alt="tasmota" width="1000">
 
 It is useful to use relay module:
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/relay_module.png" alt="relay" width="400">
+<img src="diagram/relay_module.png" alt="relay" width="400">
 
 This board is very convenient as in addition to the relay it contains a status led, the switching transistor and the freewheeling diode.
 Power LED is also a SMD type and it shows the status of power source connected with the 5V single channel relay module. A freewheeling diode is connected across the coil to avoid the effect of back EMF. It is also known as a flyback diode. The coil used in the relay is an inductive type. When the current passes through an inductive load, it produces an back EMF voltage. This back EMF may damage the circuit. Therefore, a freewheeling diode is used to avoid this effect.  
 
 The maximum current sourcing capability of GPIO pins is generally less than 20mA. Hence, a switching transistor is used in this relay module to amplify current to the level of the minimum current requirement of the relay coil. By using a switching transistor, we can control the relay from the GPIO pin of a microcontroller.
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/rel.png" alt="relay" width="400">
+<img src="diagram/rel.png" alt="relay" width="400">
 
 ___
 
@@ -1993,11 +1993,11 @@ it is also very interesting to watch how these devices connect to the local netw
 
 The map was obtained via the PRTG network monitor.
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/diagram/map.png" alt="map" width="1000">
+<img src="diagram/map.png" alt="map" width="1000">
 
 For example: 
 
-<img src="https://github.com/mastroalex/tempcontrol/blob/main/img/proto1.png" alt="protype" width="1000">
+<img src="img/proto1.png" alt="protype" width="1000">
 
 
 > Real application - Prototype no. 2 - Tasmota and board equipped with DHT11 (Sinric + Home Automation) - In this example only 3 of the 6 relays provided are used. The circuit includes a 5V power supply, level converter, relays and equipped NodeMCU.
