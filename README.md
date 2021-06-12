@@ -1993,9 +1993,14 @@ The maximum current sourcing capability of GPIO pins is generally less than 20mA
 
 <img src="diagram/rel.png" alt="relay" width="400">
 
+It is also possibile to use all in one board with ESP 8266 and relay to reduce size. Like this:
+
+
+<img src="img/rel_allinone.jpg" alt="relay" width="250">
+ 
 ___
 
-it is also very interesting to watch how these devices connect to the local network through a sunburst graph. these devices integrate easily with all home automation available on the market and allow their control from a single platform, in this case via the Alexa system.
+It is also very interesting to watch how these devices connect to the local network through a sunburst graph. these devices integrate easily with all home automation available on the market and allow their control from a single platform, in this case via the Alexa system.
 
 The map was obtained via the PRTG network monitor.
 
