@@ -1976,6 +1976,9 @@ It is also important to set the right time zone so open the console from web ser
 - `TimeSTD 0, 0, 10, 1, 3, 60` and `TimeDST 0, 0, 3, 1, 2, 120` to set winter (STD) and summer (DST) time
 - `Timezone 99`, to disable the deviation from UTC leaving valid the commands for STD and DST time 
 
+It is also important to set the correct longitude and latitude to properly work with sunrise and sunset rules for the timers:
+- `longitude 12.492373`
+- `latitude 41.890251 `
 For other info [tasmota.com](https://tasmota.github.io/docs/).
 
 An example for schematic:
